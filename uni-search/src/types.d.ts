@@ -7,7 +7,7 @@ interface UniversityInfoProps {
 			state: string;
 			coords: { longitude: number; latitude: number };
 		};
-		description: string;
+		description?: string; // TODO: CANNOT BE FOUND IN IPEDS
 		controlOfInst: string; // public/private
 		foundedYear?: number; // TODO: cannot be found in IPEDS
 		imageUrl?: string; // TODO: Not found in IPEDS
@@ -36,7 +36,7 @@ interface UniversityInfoProps {
 			graduate: number;
 			undergraduate: number;
 		};
-		demographics?: {
+		demographics: {
 			gender: { [key: string]: { percent: number; total: number } };
 			race: { [key: string]: { percent: number; total: number } };
 		};

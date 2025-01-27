@@ -49,7 +49,7 @@ This is a filtered list of the data inside the access database provided by [IPED
     -   -2 Not applicable
 -   APPLFEEU - Undergraduate application fee
 
-### IC2023MISSION - Mission Statement
+### IC2023Mission - Mission Statement
 
 -   MISSIONURL - URL to mission statement (if admission statement missing)
 -   MISSION - Mission statement
