@@ -203,7 +203,8 @@ export default function UniversityInfo({
 								},
 							]}
 							colors={['#00c950', '#555']}
-						/>
+						/>{' '}
+						{/* TODO: MAKE THE COLORS MORE TASTEFUL */}
 						<StackedBarChart
 							data={Object.entries(admissions.applicants).reduce(
 								(data, [key, value]) => {
@@ -229,6 +230,8 @@ export default function UniversityInfo({
 							tooltips={false}
 						/>
 						<div>
+							{' '}
+							{/* TODO: MOVE THIS SOMEWHERE MORE REASONABLE */}
 							<div className='flex flex-col items-center'>
 								<p className='text-3xl font-medium'>
 									${admissions.applicationFee}
