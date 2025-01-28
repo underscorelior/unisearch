@@ -6,10 +6,14 @@ export default function StackedBarChart({
 	data,
 	colors,
 	proportion = false,
+	className = '',
+	tooltips = true,
 }: {
-	data: { [key: string]: number };
+	data: { [key: string]: { percent: number; total: number } };
 	colors: string[];
 	proportion?: boolean;
+	className?: string;
+	tooltips?: boolean;
 }) {
 	const [hover, setHover] = useState<string>('');
 	const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(
@@ -19,13 +23,13 @@ export default function StackedBarChart({
 	function generateGridCols(): string {
 		const out = [] as string[];
 		if (proportion) {
-			let num = 0;
-			Object.keys(data).map((cat) => (num += data[cat]));
 			Object.keys(data).map((cat) =>
-				out.push((data[cat] / num) * 100 + '%')
+				out.push(data[cat].percent * 100 + '%')
 			);
 		} else {
-			Object.keys(data).map((cat) => out.push(data[cat] * 100 + '%'));
+			Object.keys(data).map((cat) =>
+				out.push(data[cat].percent * 100 + '%')
+			);
 		}
 
 		return out.join(' ');
@@ -45,12 +49,9 @@ export default function StackedBarChart({
 			.toString(16)
 			.slice(1)}`;
 	}
-	function propSum(): number {
-		return Object.keys(data).reduce((a, b) => a + data[b], 0);
-	}
 
 	return (
-		<div className='flex flex-col gap-4'>
+		<div className={`flex flex-col gap-4 ${className}`}>
 			<div
 				className='grid max-w-lg'
 				style={{ gridTemplateColumns: generateGridCols() }}
@@ -71,15 +72,15 @@ export default function StackedBarChart({
 								setHover(category);
 							}}
 							onMouseLeave={() => setHover('')}
-							className='relative border-background border-[0.5px] w-full min-w-1 h-8 hover:border transition-all'
+							className='relative border-background border-[0.5px] w-full min-w-1 h-8 hover:border transition-all dark:border-muted'
 						></div>
 					);
 				})}
 
-				{hover && mousePos && (
+				{hover && mousePos && tooltips && (
 					<div
 						id='tooltip'
-						className='fixed z-50 bg-white p-2 rounded-sm drop-shadow min-w-20'
+						className='fixed z-50 bg-background p-2 rounded-sm drop-shadow min-w-20'
 						style={{
 							left: mousePos.x + 10,
 							top: mousePos.y + 10,
@@ -88,14 +89,7 @@ export default function StackedBarChart({
 						<h1 className='text-lg font-semibold'>
 							{capitalizeFirstLetter(hover)}
 						</h1>
-						<span>
-							{(
-								(proportion
-									? data[hover] / propSum()
-									: data[hover]) * 100
-							).toFixed(1)}
-							%
-						</span>
+						<span>{(data[hover].percent * 100).toFixed(2)}%</span>
 					</div>
 				)}
 			</div>
@@ -117,8 +111,8 @@ export default function StackedBarChart({
 							</span>
 							<span className='font-bold pl-1'>
 								{proportion
-									? data[category].toLocaleString()
-									: (data[category] * 100).toFixed(1)}
+									? data[category].total.toLocaleString()
+									: (data[category].percent * 100).toFixed(1)}
 								{!proportion && '%'}
 							</span>
 						</span>

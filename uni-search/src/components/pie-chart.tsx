@@ -32,7 +32,6 @@ export default function LabelPieChart({
 						cy='50%'
 						labelLine={false}
 						outerRadius={80}
-						fill='#8884d8'
 						dataKey='value'
 					>
 						{data.map((entry, index) => (
@@ -47,7 +46,7 @@ export default function LabelPieChart({
 							if (active && payload && payload.length) {
 								const { name, value } = payload[0];
 								return (
-									<div className='bg-white p-2 border border-gray-200 rounded-md'>
+									<div className='bg-background p-2 border border-muted rounded-md'>
 										<h1 className='text-lg font-semibold'>
 											{name}
 										</h1>

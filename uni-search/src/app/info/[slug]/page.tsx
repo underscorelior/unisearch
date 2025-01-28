@@ -1,85 +1,176 @@
 import UniversityInfo from '@/components/uni';
 
 // Random data I made up
-const universityData = {
-	basicInfo: {
-		name: 'UCLA',
-		location: { state: 'CA', city: 'Westwood (i think)' },
-		description: 'UCLA is a university!',
-		foundedYear: 1885, // TODO: NOT IN IPEDS
-		imageUrl: `https://img.logo.dev/ucla.edu?token=${process.env.LOGO_KEY}`, // just add url later
-
-		url: 'https://ucla.edu',
-		admUrl: 'https://admission.ucla.edu/',
+const ucla_ex: UniversityInfoProps = {
+	id: 1001,
+	general: {
+		name: 'University of California, Los Angeles (UCLA)',
+		location: {
+			city: 'Los Angeles',
+			state: 'California',
+			coords: { longitude: -118.4452, latitude: 34.0689 },
+			campusLocale: 11,
+		},
+		description:
+			'A public research university in Los Angeles, known for its academic excellence and vibrant campus life.',
+		controlOfInst: 1,
+		foundedYear: 1919,
+		// TODO:
+		imageUrl:
+			'https://commons.wikimedia.org/wiki/File:Royce_Hall,_University_of_California,_Los_Angeles_(23-09-2003).jpg',
+		URLs: {
+			general: 'https://www.ucla.edu',
+			admissions: 'https://admission.ucla.edu',
+			financialAid: 'https://financialaid.ucla.edu',
+			application: 'https://admission.ucla.edu/apply',
+			netPriceCalc: 'https://npc.ucla.edu',
+		},
+		// TODO:
+		missionStatement:
+			'UCLA is dedicated to creating, disseminating, preserving, and applying knowledge for the betterment of our global society.',
 	},
-	highestDegree: 'Doctoral',
-	studentCount: 18654,
-	admissionInfo: {
-		rate: 0.68,
-		averageGPA: 3.8,
-		averageSAT: 1350,
-		averageACT: 37,
+	academics: {
+		highestDegreeOffered: 11,
+		calendarSystem: ['Quarter'], // TODO:
+		studentFacultyRatio: '18:1',
+		graduationRate: {
+			'4yr': 0.75,
+			'5yr': 0.89,
+			'6yr': 0.92,
+		},
+		retentionRate: 0.97,
+	},
+	enrollment: {
+		total: 46500,
+		graduate: 14500,
+		undergraduate: 32000,
+		demographics: {
+			gender: {
+				male: { percent: 0.44, total: 14080 },
+				female: { percent: 0.56, total: 17920 },
+			},
+			race: {
+				Asian: { percent: 0.28, total: 8960 },
+				White: { percent: 0.26, total: 8320 },
+				Hispanic: { percent: 0.22, total: 7040 },
+				AfricanAmerican: { percent: 0.06, total: 1920 },
+				International: { percent: 0.14, total: 4480 },
+				Other: { percent: 0.04, total: 1280 },
+			},
+		},
+	},
+	admissions: {
+		applicationFee: 70,
+		averageGPA: 4.18,
 		testScores: {
 			sat: {
+				pctSubmit: 30,
 				math: {
-					'25th': 650,
-					'50th': 700,
-					'75th': 770,
+					'25th': 670,
+					'50th': 740,
+					'75th': 790,
 				},
 				reading: {
-					'25th': 200,
-					'50th': 700,
-					'75th': 770,
+					'25th': 650,
+					'50th': 710,
+					'75th': 760,
 				},
 			},
 			act: {
-				'25th': 25,
-				'50th': 30,
+				pctSubmit: 20,
+				'25th': 29,
+				'50th': 32,
 				'75th': 35,
 			},
 		},
-		applicationDeadline: 'November 15', // TODO: NOT IN IPEDS
-		decisionDate: 'March?', // TODO: NOT IN IPEDS
-	},
-
-	tuition: {
-		inState: 12500,
-		outOfState: 28000,
-	},
-	demographics: {
-		gender: {
-			Male: 0.48,
-			Female: 0.51,
-			'Non-binary': 0.01, // TODO: CHANGE TO UNKNOWN OR OTHER VERSION
+		acceptanceRate: {
+			overall: 0.108,
+			male: 0.1,
+			female: 0.115,
 		},
-		race: {
-			Asian: 0.351,
-			White: 0.25,
-			Hispanic: 0.22,
-			'African American': 0.065,
-			Other: 0.114,
+		yieldRate: 0.45,
+		applicants: {
+			total: 140500,
+			male: 62800,
+			female: 76700,
+			other: 1000,
+		},
+		admitted: {
+			total: 15050,
+			male: 6300,
+			female: 8700,
+			other: 50,
+		},
+		enrolled: {
+			total: 6710,
+			male: 2900,
+			female: 3800,
+			other: 10,
+		},
+		considerations: {
+			gpa: 5,
+			rank: 3,
+			record: 5,
+			collegePrep: 5,
+			recommendations: 3,
+			demonstration: 1,
+			tests: 4,
+			workExp: 2,
+			essay: 5,
+			legacy: 1,
 		},
 	},
-	enrollment: {
-		studentFacultyRatio: '16:1',
-		students: {
-			graduate: 2000,
-			undergraduate: 16300,
+	financial: {
+		tuitionvaries: true,
+		costs: {
+			inState: {
+				tuition: 13420,
+				fees: 2400,
+				percentage: 0.3,
+				totalcost: 16120,
+				net: 12500,
+			},
+			outOfState: {
+				tuition: 43420,
+				fees: 2400,
+				percentage: 0.7,
+				totalcost: 45820,
+				net: 42000,
+			},
+			room: {
+				offered: true,
+				capacity: 15000,
+				cost: 14400,
+			},
+			board: {
+				offered: true,
+				mealsWk: 21,
+				cost: 6000,
+			},
 		},
-		graduationRate: 0.78,
-		retentionRate: 0.89,
+		aid: {
+			general: {
+				percentage: 0.65,
+				average: 14000,
+			},
+			federal: {
+				percentage: 0.3,
+				average: 5500,
+			},
+			state: {
+				percentage: 0.4,
+				average: 7500,
+			},
+			institutional: {
+				percentage: 0.55,
+				average: 10000,
+			},
+		},
 	},
-	financialAid: {
-		percentReceivingAid: 65,
-		averagePackage: 18000,
-	},
-	otherStats: {
-		Endowment: '$750 million',
-	},
-} as UniversityInfoProps;
+};
 
 export default function UniversityPage() {
-	return <UniversityInfo {...universityData} />;
+	return <UniversityInfo {...ucla_ex} />;
 }
 
 // export default async function Page({

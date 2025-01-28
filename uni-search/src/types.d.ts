@@ -6,9 +6,10 @@ interface UniversityInfoProps {
 			city: string;
 			state: string;
 			coords: { longitude: number; latitude: number };
+			campusLocale: number;
 		};
 		description?: string; // TODO: CANNOT BE FOUND IN IPEDS
-		controlOfInst: string; // public/private
+		controlOfInst: number; // public/private
 		foundedYear?: number; // TODO: cannot be found in IPEDS
 		imageUrl?: string; // TODO: Not found in IPEDS
 		URLs: {
@@ -21,7 +22,7 @@ interface UniversityInfoProps {
 		missionStatement: string;
 	};
 	academics: {
-		highestDegreeOffered: string;
+		highestDegreeOffered: number;
 		calendarSystem: string[];
 		studentFacultyRatio: string;
 		graduationRate: {
@@ -32,10 +33,9 @@ interface UniversityInfoProps {
 		retentionRate: number;
 	};
 	enrollment: {
-		students: {
-			graduate: number;
-			undergraduate: number;
-		};
+		total: number;
+		graduate: number;
+		undergraduate: number;
 		demographics: {
 			gender: { [key: string]: { percent: number; total: number } };
 			race: { [key: string]: { percent: number; total: number } };
@@ -75,22 +75,19 @@ interface UniversityInfoProps {
 			total: number;
 			male: number;
 			female: number;
-			another: number;
-			unknown: number;
+			other: number;
 		};
 		admitted: {
 			total: number;
 			male: number;
 			female: number;
-			another: number;
-			unknown: number;
+			other: number;
 		};
 		enrolled: {
 			total: number;
 			male: number;
 			female: number;
-			another: number;
-			unknown: number;
+			other: number;
 		};
 		considerations: {
 			gpa: number;
@@ -106,20 +103,31 @@ interface UniversityInfoProps {
 		};
 	};
 	financial: {
+		tuitionvaries: boolean;
 		costs: {
 			inState: {
 				tuition: number;
 				fees: number;
 				percentage: number;
-				total: number;
+				totalcost: number;
 				net: number;
 			};
 			outOfState: {
 				tuition: number;
 				fees: number;
 				percentage: number;
-				total: number;
+				totalcost: number;
 				net: number;
+			};
+			room: {
+				offered: boolean;
+				capacity: number;
+				cost: number;
+			};
+			board: {
+				offered: boolean;
+				mealsWk: number;
+				cost: number;
 			};
 		};
 		aid: {
@@ -140,8 +148,5 @@ interface UniversityInfoProps {
 				average: number;
 			};
 		};
-	};
-	otherStats?: {
-		[key: string]: string | number;
 	};
 }

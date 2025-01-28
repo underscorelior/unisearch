@@ -48,11 +48,47 @@ This is a filtered list of the data inside the access database provided by [IPED
     -   7 Continuous
     -   -2 Not applicable
 -   APPLFEEU - Undergraduate application fee
+-   ROOMAMT - Room charges
+-   ROOMCAP - Room capacity
+-   BOARDAMT - Board charges (food)
+-   MEALSWK - Meals per week
+-   TUITVARY - Does tuition vary for in-state vs out-of-state students
+    -   1 Yes
+    -   2 No
+    -   -1 Not reported
+    -   -2 Not applicable
+-   ROOM - Does the institution provide on-campus housing
+    -   1 Yes
+    -   2 No
+    -   -1 Not reported
+    -   -2 Not applicable
+-   BOARD - Does the institution provide a meal plan
+    -   1 Yes
+    -   2 No
+    -   -1 Not reported
+    -   -2 Not applicable
 
 ### IC2023Mission - Mission Statement
 
 -   MISSIONURL - URL to mission statement (if admission statement missing)
 -   MISSION - Mission statement
+
+### IC2023_PCCAMPUSES
+
+-   PCLOCALE - Sector of institution
+    -   11 - City: Large
+    -   12 - City: Midsize
+    -   13 - City: Small
+    -   21 - Suburb: Large
+    -   22 - Suburb: Midsize
+    -   23 - Suburb: Small
+    -   31 - Town: Fringe
+    -   32 - Town: Distant
+    -   33 - Town: Remote
+    -   41 - Rural: Fringe
+    -   42 - Rural: Distant
+    -   43 - Rural: Remote
+    -   -3 - Not available
 
 ## Academic Data
 
@@ -245,6 +281,17 @@ This is a filtered list of the data inside the access database provided by [IPED
 -   FEE2 - In-state avg required fees for full-time undergrads
 -   TUITION3 - Out-of-state avg tuition for full-time undergrads
 -   FEE3 - Out-of-state avg required fees for full-time undergrads
+-   chg4ay3 - Books and supplies
+-   chg5ay3- On-campus food and housing
+-   chg6ay3 - On-campus, Other expenses
+-   chg7ay3 - Off-campus w/o family food and housing
+-   chg8ay3 - Off-campus w/o family other expenses
+-   chg9ay3 - Off-campus w/ family food and housing
+-   chg10ay3 - Off-campus w/ family other expenses
+-   chg2at3 - Published in-state tuition
+-   chg2af3- Published in-state fees
+-   chg3at3 - Published out-of-state tuition
+-   chg3af3 - Published out-of-state fees
 
 ### SFA2223_P1 - Student financial aid
 
