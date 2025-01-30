@@ -2,15 +2,16 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { LoaderIcon, Search, X } from 'lucide-react';
+import { LoaderIcon, X } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface SearchResult {
 	id: string;
-	name: string;
-	location: string;
+	inst_name: string;
+	city: string;
+	state: string;
 }
 
 export function SearchBar() {
@@ -21,6 +22,7 @@ export function SearchBar() {
 	const [errorMessage, setErrorMessage] = useState('');
 	const [showDropdown, setShowDropdown] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement | null>(null);
+	const router = useRouter();
 
 	useEffect(() => {
 		function handleClickOutside(event: MouseEvent) {
@@ -38,7 +40,7 @@ export function SearchBar() {
 		};
 	}, []);
 
-	async function handleSearch(e: React.FormEvent) {
+	async function handleSearch(e: React.FormEvent, value: string) {
 		e.preventDefault();
 		setTooMany(false);
 		setIsLoading(true);
@@ -46,7 +48,7 @@ export function SearchBar() {
 
 		try {
 			const response = await fetch(
-				`/api/search?search=${encodeURIComponent(searchTerm)}`
+				`/api/search?search=${encodeURIComponent(value.toLowerCase())}`
 			);
 
 			if (!response.ok) {
@@ -55,16 +57,7 @@ export function SearchBar() {
 
 			const data = await response.json();
 			if (data.success === true) {
-				const parsedResults = data.parsedHTML.map((item: string) => {
-					const [id, rest] = item.split(': ');
-					const split = rest.split(', ');
-					return {
-						id,
-						name: split[0],
-						location: split.slice(1).join(', '),
-					};
-				});
-				setResults(parsedResults);
+				setResults(data.data);
 				setShowDropdown(true);
 			} else {
 				setTooMany(true);
@@ -79,45 +72,53 @@ export function SearchBar() {
 		}
 	}
 
+	function redir() {
+		if (results.length > 0) {
+			console.log(results[0].id);
+			router.push(`/info/${results[0].id}`);
+		}
+	}
 	return (
 		<Card id='search-bar' className='w-full max-w-4xl mx-auto'>
 			<CardContent className='pt-6 relative'>
-				<form onSubmit={handleSearch} className='flex gap-2'>
+				<form
+					onChange={() => {}}
+					onSubmit={(e) => {
+						e.preventDefault();
+						redir();
+					}}
+					className='flex gap-2'
+				>
 					<div className='relative flex-grow'>
 						<Input
 							type='text'
 							placeholder='Search for universities...'
 							value={searchTerm}
 							onChange={(e) => {
+								handleSearch(e, e.target.value);
 								setSearchTerm(e.target.value);
-								if (!e.target.value) {
-									setShowDropdown(false);
-								}
 							}}
 							className='w-full pr-10'
 						/>
-						{searchTerm && (
-							<X
-								className='absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 cursor-pointer'
-								onClick={() => {
-									setSearchTerm('');
-									setResults([]);
-									setShowDropdown(false);
-								}}
-							/>
-						)}
+						<div className='absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer'>
+							{searchTerm ? (
+								isLoading ? (
+									<LoaderIcon className='animate-spin h-4 w-4' />
+								) : (
+									<X
+										className='h-4 w-4'
+										onClick={() => {
+											setSearchTerm('');
+											setResults([]);
+											setShowDropdown(false);
+										}}
+									/>
+								)
+							) : (
+								<></>
+							)}
+						</div>
 					</div>
-					<Button
-						type='submit'
-						disabled={isLoading}
-						variant={'outline'}
-					>
-						{isLoading ? (
-							<LoaderIcon className='animate-spin h-4 w-4' />
-						) : (
-							<Search className='h-4 w-4' />
-						)}
-					</Button>
 				</form>
 				{showDropdown && (results.length > 0 || tooMany) && (
 					<div
@@ -146,10 +147,10 @@ export function SearchBar() {
 									>
 										<Link href={`/info/${result.id}`}>
 											<p className='font-medium'>
-												{result.name}
+												{result.inst_name}
 											</p>
 											<p className='text-sm text-muted-foreground'>
-												{result.location}
+												{result.city}, {result.state}
 											</p>
 										</Link>
 									</li>

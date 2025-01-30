@@ -50,9 +50,9 @@ export default function LabelPieChart({
 										<h1 className='text-lg font-semibold'>
 											{name}
 										</h1>
-										<p>{`${(value as number)?.toPrecision(
-											3
-										)}%`}</p>
+										<p>{`${(
+											(value as number) * 100
+										)?.toPrecision(3)}%`}</p>
 									</div>
 								);
 							}
@@ -75,7 +75,7 @@ export default function LabelPieChart({
 								className='w-4 h-4 rounded-md min-w-1'
 							></div>
 							<span className='font-bold pl-1 text-end'>
-								{category.value.toPrecision(2)}%
+								{(+category.value * 100).toPrecision(2)}%
 							</span>
 							<span className='font-medium pl-2'>
 								{category.name}

@@ -8,6 +8,7 @@ This is a filtered list of the data inside the access database provided by [IPED
 
 -   UNITID - ID
 -   INSTNM - Name of the institution
+-   IALIAS - Alias
 -   CITY - City where the institution is located
 -   STABBR - State abbreviation
 -   WEBADDR - Web address

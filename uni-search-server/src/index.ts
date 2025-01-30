@@ -19,12 +19,17 @@ app.get('/api/search', async (req: Request, res: Response) => {
 		return res.status(400).json({ message: "Missing 'search' parameter" });
 	}
 	const words = search
+		.toLowerCase()
 		.replace(/[^0-9a-z]/gi, ' ')
 		.split(' ')
 		.filter(Boolean);
 
 	if (words.length === 0) {
 		return res.status(400).json({ message: 'Invalid search parameter' });
+	}
+
+	if (search.toLowerCase() == 'mit') {
+		words.push('massachusetts', 'institute', 'technology');
 	}
 
 	const clauses = words
@@ -75,7 +80,7 @@ app.get('/api/get-inst-data', async (req: Request, res: Response) => {
 	}
 });
 
-const PORT = 1234;
+const PORT = process.env.PORT || 1234;
 app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`);
 });

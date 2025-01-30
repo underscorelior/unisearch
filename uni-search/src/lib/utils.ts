@@ -34,3 +34,15 @@ export function sortPieChartArray(
 }[] {
 	return ipt.toSorted((a, b) => b.value - a.value);
 }
+
+export async function getUniversityInfo(slug: string) {
+	const response = await fetch(`/api/getinfo?id=${slug}`);
+
+	if (!response.ok) {
+		throw new Error('Failed to fetch university data');
+	}
+
+	const data = await response.json();
+
+	return data;
+}

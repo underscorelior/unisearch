@@ -23,7 +23,7 @@ export default function Admissions({
 					data={data}
 				>
 					<Label
-						value={`${data[0].value}%`}
+						value={`${data[0].value.toFixed(1)}%`}
 						position='center'
 						className='text-bold font-mono text-2xl fill-foreground'
 					/>

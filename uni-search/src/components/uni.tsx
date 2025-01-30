@@ -10,7 +10,6 @@ import {
 	CardTitle,
 } from '@/components/ui/card';
 import {
-	School,
 	MapPin,
 	Users,
 	BookOpen,
@@ -33,7 +32,7 @@ import control_conv from '@/assets/control_conv.json';
 import high_deg_conv from '@/assets/high_deg_conv.json';
 import TestScoreRange from './test-range';
 import Admissions from './admissions';
-import { Button } from './ui/button';
+import Head from 'next/head';
 
 export default function UniversityInfo({
 	general,
@@ -60,7 +59,7 @@ export default function UniversityInfo({
 	const raceData = demographics?.race
 		? Object.entries(demographics.race).map(([name, value]) => ({
 				name,
-				value: value.percent * 100,
+				value: value.percent / 100,
 		  }))
 		: [];
 
@@ -71,10 +70,27 @@ export default function UniversityInfo({
 		'#FF8042',
 		'#8884D8',
 		'#82ca9d',
+		'#5A5A99',
+		'#6B8E23',
+		'#FFD700',
+		'#FF6347',
+		'#6A5ACD',
+		'#32CD32',
+		'#A52A2A',
+		'#6495ED',
+		'#D2691E',
 	];
+
+	const USD = new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	});
 
 	return (
 		<div className='container mx-auto p-4 space-y-8'>
+			<Head>
+				<title>{general.name} - Information</title>
+			</Head>
 			<SearchBar />
 			<Card className='w-full max-w-4xl mx-auto'>
 				<CardHeader>
@@ -87,7 +103,11 @@ export default function UniversityInfo({
 										'http://',
 										''
 									)}?token=pk_SlnGUaGiQEClf4KEK7bUwA&retina=true` ||
-								'/placeholder.svg'
+								`${general.URLs.general}${
+									general.URLs.general.endsWith('/')
+										? ''
+										: '/'
+								}favicon.ico`
 							}
 							alt={`${general.name} campus`}
 							width={200}
@@ -103,23 +123,29 @@ export default function UniversityInfo({
 								{general.location !== null
 									? `${general.location.city}, ${general.location.state}`
 									: 'N/A'}
-								<TowerControl className='w-4 h-4 ml-6 mr-2' />
-								<span>{controlOfInst}</span>
-								<Building className='w-4 h-4 ml-6 mr-2' />
-								<span>{locale.split(': ')[0]}</span>
-								<TreeDeciduous className='w-4 h-4 ml-6 mr-2' />
-								<span>{locale.split(': ')[1]}</span>
+								{locale ? (
+									<>
+										<TowerControl className='w-4 h-4 ml-6 mr-2' />
+										<span>{controlOfInst}</span>
+										<Building className='w-4 h-4 ml-6 mr-2' />
+										<span>{locale.split(': ')[0]}</span>
+										<TreeDeciduous className='w-4 h-4 ml-6 mr-2' />
+										<span>{locale.split(': ')[1]}</span>
+									</>
+								) : (
+									<></>
+								)}
 							</CardDescription>
 						</div>
 					</div>
 				</CardHeader>
 				<CardContent>
-					<p className='text-muted-foreground mb-4'>
+					{/* <p className='text-muted-foreground mb-4'>
 						{general.description}
-					</p>
+					</p> */}
 
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-6'>
-						<div className='flex items-center'>
+						{/* <div className='flex items-center'>
 							<School className='w-5 h-5 mr-2' />
 							<span className='font-semibold'>
 								Founded:{' '}
@@ -127,7 +153,7 @@ export default function UniversityInfo({
 									{general.foundedYear || 'N/A'}
 								</span>
 							</span>
-						</div>
+						</div> */}
 						<div className='flex items-center w-max justify-center'>
 							<GraduationCap className='w-5 h-5 mr-2' />
 							<span className='font-semibold'>
@@ -169,19 +195,22 @@ export default function UniversityInfo({
 							<div className='w-full grid grid-cols-3 items-center justify-center h-full font-sans'>
 								<div className='flex flex-col items-center'>
 									<p className='text-3xl font-medium'>
-										{admissions.applicants.total.toLocaleString()}
+										{(+admissions.applicants
+											.total).toLocaleString()}
 									</p>
 									<p>Applied</p>
 								</div>
 								<div className='flex flex-col items-center'>
 									<p className='text-3xl font-medium'>
-										{admissions.admitted.total.toLocaleString()}
+										{(+admissions.admitted
+											.total).toLocaleString()}
 									</p>
 									<p>Admitted</p>
 								</div>
 								<div className='flex flex-col items-center'>
 									<p className='text-3xl font-medium'>
-										{admissions.enrolled.total.toLocaleString()}
+										{(+admissions.enrolled
+											.total).toLocaleString()}
 									</p>
 									<p>Enrolled</p>
 								</div>
@@ -202,7 +231,7 @@ export default function UniversityInfo({
 										admissions.acceptanceRate.overall * 100,
 								},
 							]}
-							colors={['#00c950', '#555']}
+							colors={['#00c950', '#ababab']}
 						/>{' '}
 						{/* TODO: MAKE THE COLORS MORE TASTEFUL */}
 						<StackedBarChart
@@ -212,8 +241,10 @@ export default function UniversityInfo({
 										data[key] = {
 											total: value as number,
 											percent:
-												(value as number) /
-												admissions.applicants.total,
+												((value as number) /
+													admissions.applicants
+														.total) *
+												100,
 										};
 									}
 									return data;
@@ -230,7 +261,6 @@ export default function UniversityInfo({
 							tooltips={false}
 						/>
 						<div>
-							{' '}
 							{/* TODO: MOVE THIS SOMEWHERE MORE REASONABLE */}
 							<div className='flex flex-col items-center'>
 								<p className='text-3xl font-medium'>
@@ -242,25 +272,34 @@ export default function UniversityInfo({
 						<h2 className='col-start-1 col-span-2 text-xl font-semibold'>
 							Test Scores
 						</h2>
-						<div className='col-span-3 flex flex-col gap-8'>
-							<TestScoreRange
-								data={admissions.testScores.sat.math}
-								title='SAT Math'
-							/>
-							<TestScoreRange
-								data={admissions.testScores.sat.reading}
-								title='SAT Reading and Writing'
-							/>
-							<TestScoreRange
-								data={admissions.testScores.act}
-								title='ACT'
-								type='act'
-							/>
-						</div>
+						{admissions.testScores.sat.math['50th'] ? (
+							<div className='col-span-3 flex flex-col gap-8'>
+								<TestScoreRange
+									data={admissions.testScores.sat.math}
+									title='SAT Math'
+								/>
+								<TestScoreRange
+									data={admissions.testScores.sat.reading}
+									title='SAT Reading and Writing'
+								/>
+								<TestScoreRange
+									data={admissions.testScores.act}
+									title='ACT'
+									type='act'
+								/>
+							</div>
+						) : (
+							<div className='col-span-3 flex flex-col gap-8'>
+								<p className='text-muted-foreground'>
+									This school does not require test scores for
+									admission or does not report them.
+								</p>
+							</div>
+						)}
 					</div>
 				</CardContent>
 				<CardFooter className='flex flex-row justify-between'>
-					<Button>Admissions Considerations</Button>
+					{/* <Button>Admissions Considerations</Button> */}
 					<Link href={general.URLs.application} className='ml-auto'>
 						<Badge
 							variant={'outline'}
@@ -284,7 +323,9 @@ export default function UniversityInfo({
 							<p className='font-medium'>In-State Tuition:</p>
 							<p>
 								{financial.costs.inState.tuition
-									? `$${financial.costs.inState.tuition.toLocaleString()}`
+									? `${USD.format(
+											financial.costs.inState.tuition
+									  )}`
 									: 'N/A'}
 							</p>
 						</div>
@@ -292,7 +333,9 @@ export default function UniversityInfo({
 							<p className='font-medium'>Out-of-State Tuition:</p>
 							<p>
 								{financial.costs.outOfState.tuition
-									? `$${financial.costs.outOfState.tuition.toLocaleString()}`
+									? `${USD.format(
+											financial.costs.outOfState.tuition
+									  )}`
 									: 'N/A'}
 							</p>
 						</div>
@@ -300,10 +343,7 @@ export default function UniversityInfo({
 							<p className='font-medium'>% Receiving Aid:</p>
 							<p>
 								{financial.aid.general.percentage
-									? `${(
-											financial.aid.general.percentage *
-											100
-									  ).toFixed(1)}%`
+									? `${financial.aid.general.percentage}%`
 									: 'N/A'}
 							</p>
 						</div>
@@ -311,7 +351,9 @@ export default function UniversityInfo({
 							<p className='font-medium'>Average Aid Package:</p>
 							<p>
 								{financial.aid.general.average
-									? `$${financial.aid.general.average.toLocaleString()}`
+									? `${USD.format(
+											financial.aid.general.average
+									  )}`
 									: 'N/A'}
 							</p>
 						</div>
@@ -327,7 +369,7 @@ export default function UniversityInfo({
 					<div className='flex items-center'>
 						<Users className='w-5 h-5 mr-2' />
 						<span>
-							Students: {enrollment.total.toLocaleString()}
+							Students: {(+enrollment.total).toLocaleString()}
 						</span>
 					</div>
 					<div className='flex items-center'>
@@ -344,7 +386,7 @@ export default function UniversityInfo({
 				<CardHeader>
 					<CardTitle className='text-xl'>Demographics</CardTitle>
 				</CardHeader>
-				<CardContent className='grid grid-cols-2 gap-8'>
+				<CardContent className='flex flex-col md:grid md:grid-cols-2 gap-8'>
 					<div className='flex flex-col gap-8 '>
 						<div className='w-full'>
 							<h4 className='text-lg font-semibold'>

@@ -1,10 +1,10 @@
 export default function TestScoreRange({
-	data,
 	title,
+	data,
 	type = 'sat',
 }: {
-	data: { '25th': number; '50th': number; '75th': number };
 	title: string;
+	data: { '25th': number; '50th': number; '75th': number };
 	type?: 'act' | 'sat';
 }) {
 	const scaleMin = type === 'act' ? 1 : 200;

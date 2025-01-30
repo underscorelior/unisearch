@@ -1,17 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
-	const search = req.nextUrl.searchParams.get('search');
+	const id = req.nextUrl.searchParams.get('id');
 
-	if (!search) {
+	if (!id) {
 		return NextResponse.json({
-			message: "Missing 'search' parameter",
+			message: "Missing 'id' parameter",
 		});
 	}
 
 	try {
 		const response = await fetch(
-			`https://lior.hackclub.app/api/search?search=${search}`
+			`https://lior.hackclub.app/api/get-inst-data?id=${id}`
 		);
 
 		const data = await response.json();

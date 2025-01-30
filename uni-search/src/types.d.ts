@@ -5,13 +5,13 @@ interface UniversityInfoProps {
 		location: {
 			city: string;
 			state: string;
-			coords: { longitude: number; latitude: number };
+			// coords: { longitude: number; latitude: number };
 			campusLocale: number;
 		};
-		description?: string; // TODO: CANNOT BE FOUND IN IPEDS
-		controlOfInst: number; // public/private
-		foundedYear?: number; // TODO: cannot be found in IPEDS
-		imageUrl?: string; // TODO: Not found in IPEDS
+		// description?: string; // TODO: CANNOT BE FOUND IN IPEDS
+		// foundedYear?: number; // TODO: cannot be found in IPEDS
+		// imageUrl?: string; // TODO: Not found in IPEDS
+		controlOfInst: number;
 		URLs: {
 			general: string;
 			admissions: string;
@@ -19,11 +19,11 @@ interface UniversityInfoProps {
 			application: string;
 			netPriceCalc: string;
 		};
-		missionStatement: string;
+		// missionStatement: string; // TODO: Needed??
 	};
 	academics: {
 		highestDegreeOffered: number;
-		calendarSystem: string[];
+		// calendarSystem: string[]; // TODO: Needed?
 		studentFacultyRatio: string;
 		graduationRate: {
 			'4yr': number;
@@ -43,7 +43,7 @@ interface UniversityInfoProps {
 	};
 	admissions: {
 		applicationFee: number;
-		averageGPA?: number; // TODO: NOT INCLUDED IN IPEDS
+		// averageGPA?: number; // TODO: NOT INCLUDED IN IPEDS
 		testScores: {
 			sat: {
 				pctSubmit: number;
@@ -67,10 +67,10 @@ interface UniversityInfoProps {
 		};
 		acceptanceRate: {
 			overall: number;
-			male: number;
-			female: number;
+			// male: number;
+			// female: number;
 		};
-		yieldRate: number;
+		// yieldRate: number;
 		applicants: {
 			total: number;
 			male: number;
@@ -79,28 +79,28 @@ interface UniversityInfoProps {
 		};
 		admitted: {
 			total: number;
-			male: number;
-			female: number;
-			other: number;
+			// male: number;
+			// female: number;
+			// other: number;
 		};
 		enrolled: {
 			total: number;
-			male: number;
-			female: number;
-			other: number;
+			// male: number;
+			// female: number;
+			// other: number;
 		};
-		considerations: {
-			gpa: number;
-			rank: number;
-			record: number;
-			collegePrep: number;
-			recommendations: number;
-			demonstration: number;
-			tests: number;
-			workExp: number;
-			essay: number;
-			legacy: number;
-		};
+		// considerations: {
+		// 	gpa: number;
+		// 	rank: number;
+		// 	record: number;
+		// 	collegePrep: number;
+		// 	recommendations: number;
+		// 	demonstration: number;
+		// 	tests: number;
+		// 	workExp: number;
+		// 	essay: number;
+		// 	legacy: number;
+		// };
 	};
 	financial: {
 		tuitionvaries: boolean;
@@ -119,34 +119,34 @@ interface UniversityInfoProps {
 				totalcost: number;
 				net: number;
 			};
-			room: {
-				offered: boolean;
-				capacity: number;
-				cost: number;
-			};
-			board: {
-				offered: boolean;
-				mealsWk: number;
-				cost: number;
-			};
+			// room: {
+			// 	offered: boolean;
+			// 	capacity: number;
+			// 	cost: number;
+			// };
+			// board: {
+			// 	offered: boolean;
+			// 	mealsWk: number;
+			// 	cost: number;
+			// };
 		};
 		aid: {
 			general: {
 				percentage: number;
 				average: number;
 			};
-			federal: {
-				percentage: number;
-				average: number;
-			};
-			state: {
-				percentage: number;
-				average: number;
-			};
-			institutional: {
-				percentage: number;
-				average: number;
-			};
+			// federal: {
+			// 	percentage: number;
+			// 	average: number;
+			// };
+			// state: {
+			// 	percentage: number;
+			// 	average: number;
+			// };
+			// institutional: {
+			// 	percentage: number;
+			// 	average: number;
+			// };
 		};
 	};
 }

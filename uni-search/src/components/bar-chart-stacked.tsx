@@ -27,9 +27,7 @@ export default function StackedBarChart({
 				out.push(data[cat].percent * 100 + '%')
 			);
 		} else {
-			Object.keys(data).map((cat) =>
-				out.push(data[cat].percent * 100 + '%')
-			);
+			Object.keys(data).map((cat) => out.push(data[cat].percent + '%'));
 		}
 
 		return out.join(' ');
@@ -61,6 +59,7 @@ export default function StackedBarChart({
 						hover === category
 							? lightenColor(colors[idx], 20)
 							: colors[idx];
+					if (data[category].total === 0) return;
 					return (
 						<div
 							key={category}
@@ -89,7 +88,12 @@ export default function StackedBarChart({
 						<h1 className='text-lg font-semibold'>
 							{capitalizeFirstLetter(hover)}
 						</h1>
-						<span>{(data[hover].percent * 100).toFixed(2)}%</span>
+						<span>
+							{(
+								data[hover].percent * (proportion ? 100 : 1)
+							).toFixed(0)}
+							%
+						</span>
 					</div>
 				)}
 			</div>
@@ -111,8 +115,8 @@ export default function StackedBarChart({
 							</span>
 							<span className='font-bold pl-1'>
 								{proportion
-									? data[category].total.toLocaleString()
-									: (data[category].percent * 100).toFixed(1)}
+									? (+data[category].total).toLocaleString()
+									: (data[category].percent * 1).toFixed(0)}
 								{!proportion && '%'}
 							</span>
 						</span>
