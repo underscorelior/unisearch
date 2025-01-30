@@ -1,10 +1,10 @@
 # College Search
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/8ce1a9ed-0bb8-4b21-a8ed-4bda7be81f83" />
-
 An easy to use website to search US colleges. Most other college search website are cluttered with ads (or random paid features) and provide a lot of unneccessary information. As someone who just went through the college search and application process, I know what data is useful for evaluating a college.
 
-<img width="300" alt="image" src="https://github.com/user-attachments/assets/2f1b8552-5b93-437b-bb36-c946d826cf0e" />
+<img width="550" alt="image" src="https://github.com/user-attachments/assets/8ce1a9ed-0bb8-4b21-a8ed-4bda7be81f83" /> 
+<br/>
+<img width="400" alt="image" src="https://github.com/user-attachments/assets/2f1b8552-5b93-437b-bb36-c946d826cf0e" />
 
 ## Features
 
@@ -17,6 +17,8 @@ An easy to use website to search US colleges. Most other college search website 
 A majority of data was taken from the [IPEDS database](https://nces.ed.gov/ipeds/), which is an extremeley annoying database to work with. I tried to simplify the parts that I specifically needed in [data_info.md]. Data was exported from MS Access (stupid) to SQLite.
 
 Icons and favicon are from [Lucide Ionicons](https://lucide.dev/icons).
+
+Some logos come from [logo.dev](https://logo.dev/), others are favicons.
 
 ## Tech Stack
 
