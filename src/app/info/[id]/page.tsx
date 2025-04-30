@@ -12,9 +12,10 @@ export default async function UniversityPage({
 export async function generateMetadata({
 	params,
 }: {
-	params: { id: string };
+	params: Promise<{ id: string }>;
 }): Promise<Metadata> {
 	const id = (await params).id;
+
 	// TODO: Find way of just using the prexisting API route instead of directly fetching from server.
 	const response = await fetch(
 		`https://lior.hackclub.app/api/get-inst-data?id=${id}`
