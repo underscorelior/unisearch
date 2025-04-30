@@ -1,11 +1,5 @@
 # College Search
 
-An easy to use website to search US colleges. Most other college search website are cluttered with ads (or random paid features) and provide a lot of unneccessary information. As someone who just went through the college search and application process, I am familiar with what information is actually useful, and what is there just to confuse you. (If you have any questions about colleges, reach me out on the Slack (@Lior))
-
-<img width="550" alt="image" src="https://github.com/user-attachments/assets/8ce1a9ed-0bb8-4b21-a8ed-4bda7be81f83" /> 
-<br/>
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/2f1b8552-5b93-437b-bb36-c946d826cf0e" />
-
 ## Features
 
 -   A clean, uncluttered interface
@@ -23,7 +17,7 @@ Some logos come from [logo.dev](https://logo.dev/), others are favicons.
 ## Tech Stack
 
 -   Frontend/Backend: Next.js
--   Backend/Database: SQLite db and an express server
+-   Backend/Database: SQLite db and an express server found at the [uni-server](https://github.com/underscorelior/uni-server) Github repo
 -   Web Hosting: Vercel
 -   Database Hosting: [HackClub's Nest](https://guides.hackclub.app/index.php/Main_Page)
 
