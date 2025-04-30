@@ -35,8 +35,8 @@ export function sortPieChartArray(
 	return ipt.toSorted((a, b) => b.value - a.value);
 }
 
-export async function getUniversityInfo(slug: string) {
-	const response = await fetch(`/api/getinfo?id=${slug}`);
+export async function getUniversityInfo(id: string) {
+	const response = await fetch(`/api/getinfo?id=${id}`);
 
 	if (!response.ok) {
 		throw new Error('Failed to fetch university data');
@@ -46,3 +46,21 @@ export async function getUniversityInfo(slug: string) {
 
 	return data;
 }
+
+export const COLORS = [
+	'#0088FE',
+	'#00C49F',
+	'#FFBB28',
+	'#FF8042',
+	'#8884D8',
+	'#82ca9d',
+	'#5A5A99',
+	'#6B8E23',
+	'#FFD700',
+	'#FF6347',
+	'#6A5ACD',
+	'#32CD32',
+	'#A52A2A',
+	'#6495ED',
+	'#D2691E',
+];

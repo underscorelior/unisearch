@@ -1,7 +1,8 @@
 import React from 'react';
 import { Cell, Label, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
-export default function Admissions({
+// TODO: RENAME thiS
+export default function AdmissionsGraph({
 	data,
 	className = '',
 	colors,

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Home() {
 	return (
-		<div className='grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
+		<div className='flex flex-col items-center h-screen min-h-screen p-8 pb-20 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] justify-between'>
 			<SearchBar />
 			<div className='text-2xl text-center'>
 				Use the searchbar above to look for universities.{' '}
@@ -37,6 +37,14 @@ export default function Home() {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className='w-full text-end'>
+				<Link
+					href='https://logo.dev'
+					className='mt-auto text-neutral-500 text-sm font-medium'
+				>
+					Logos provided by Logo.dev
+				</Link>
 			</div>
 		</div>
 	);
