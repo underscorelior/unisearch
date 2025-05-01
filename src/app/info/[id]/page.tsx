@@ -35,6 +35,6 @@ export async function generateMetadata({
 	return {
 		title: `${university.general.name} - Information`,
 		description: `Information about ${university.general.name}`,
-		openGraph: { images: [`https://${host}/info/${id}/og`], }
+		openGraph: { images: [`https://${host}/info/${id}/opengraph-image`], }
 	};
 }
