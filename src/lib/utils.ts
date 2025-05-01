@@ -35,8 +35,8 @@ export function sortPieChartArray(
 	return ipt.toSorted((a, b) => b.value - a.value);
 }
 
-export async function getUniversityInfo(id: string) {
-	const response = await fetch(`/api/getinfo?id=${id}`);
+export async function getUniversityInfo(id: string, baseurl: string = '') {
+	const response = await fetch(`${baseurl}/api/getinfo?id=${id}`);
 
 	if (!response.ok) {
 		throw new Error('Failed to fetch university data');

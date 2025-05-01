@@ -1,5 +1,6 @@
 import UniversityInfo from '@/components/uni';
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 
 export default async function UniversityPage({
 	params,
@@ -20,13 +21,20 @@ export async function generateMetadata({
 	const response = await fetch(
 		`https://lior.hackclub.app/api/get-inst-data?id=${id}`
 	);
+
 	if (!response.ok) {
 		throw new Error('Failed to fetch university data');
 	}
+
 	const university = await response.json();
+
+
+	const headersList = await headers();
+	const host = headersList.get('host');
 
 	return {
 		title: `${university.general.name} - Information`,
 		description: `Information about ${university.general.name}`,
+		openGraph: { images: [`https://${host}/info/${id}/og`], }
 	};
 }

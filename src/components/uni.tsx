@@ -8,6 +8,7 @@ import Admissions from './sections/admissions';
 import Enrollment from './sections/enrollment';
 import Financial from './sections/financial';
 import Header from './sections/header';
+import Demographics from './sections/demographics';
 
 export default function UniversityInfo({ id }: { id: string }) {
 	const [university, setUniversity] = useState<UniversityInfoProps | null>(
@@ -46,6 +47,10 @@ export default function UniversityInfo({ id }: { id: string }) {
 					<Enrollment
 						enrollment={university.enrollment}
 						academics={university.academics}
+					/>
+
+					<Demographics
+						enrollment={university.enrollment}
 					/>
 				</>
 			) : (
