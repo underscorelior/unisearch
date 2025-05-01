@@ -1,5 +1,3 @@
-import { getUniversityInfo } from '@/lib/utils';
-import { Building, MapPin, TowerControl } from 'lucide-react';
 import { headers } from 'next/headers';
 import { ImageResponse } from 'next/og';
 
