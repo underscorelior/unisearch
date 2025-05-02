@@ -1,3 +1,5 @@
+// TODO: Switch away from using shadcn
+
 'use client';
 
 import { getUniversityInfo } from '@/lib/utils';
@@ -49,9 +51,7 @@ export default function UniversityInfo({ id }: { id: string }) {
 						academics={university.academics}
 					/>
 
-					<Demographics
-						enrollment={university.enrollment}
-					/>
+					<Demographics enrollment={university.enrollment} />
 				</>
 			) : (
 				<h1>Loading...</h1>

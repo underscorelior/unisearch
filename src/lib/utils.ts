@@ -47,6 +47,13 @@ export async function getUniversityInfo(id: string, baseurl: string = '') {
 	return data;
 }
 
+export function fixURL(url: string) {
+	if (url.startsWith('http')) {
+		return url;
+	}
+	return 'https://' + url;
+}
+
 export const COLORS = [
 	'#0088FE',
 	'#00C49F',

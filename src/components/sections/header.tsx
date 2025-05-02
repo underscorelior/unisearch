@@ -6,7 +6,6 @@ import {
 	CardTitle,
 } from '../ui/card';
 import { Badge } from '../ui/badge';
-import Link from 'next/link';
 import {
 	Building,
 	GraduationCap,
@@ -19,6 +18,7 @@ import Image from 'next/image';
 import locale_conv from '@/assets/locale_conv.json';
 import control_conv from '@/assets/control_conv.json';
 import high_deg_conv from '@/assets/high_deg_conv.json';
+import { fixURL } from '@/lib/utils';
 
 export default function Header({
 	general,
@@ -108,14 +108,14 @@ export default function Header({
 						</span>
 					</div>
 				</div>
-				<Link href={general.URLs.general}>
+				<a href={fixURL(general.URLs.general)} target='_blank'>
 					<Badge
 						variant={'outline'}
 						className='flex gap-2 flex-row w-max text-sm'
 					>
 						<Link2 /> School Homepage
 					</Badge>
-				</Link>
+				</a>
 			</CardContent>
 		</Card>
 	);

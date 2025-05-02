@@ -9,9 +9,8 @@ import {
 import { Badge } from '../ui/badge';
 import StackedBarChart from '../bar-chart-stacked';
 import TestScoreRange from '../test-range';
-import Link from 'next/link';
 import AdmissionsGraph from '../admissions-graph';
-import { COLORS } from '@/lib/utils';
+import { COLORS, fixURL } from '@/lib/utils';
 
 export default function Admissions({
 	general,
@@ -25,14 +24,14 @@ export default function Admissions({
 			<CardHeader>
 				<CardTitle className='text-2xl flex flex-row justify-between'>
 					Admission Information
-					<Link href={general.URLs.admissions}>
+					<a href={fixURL(general.URLs.admissions)}>
 						<Badge
 							variant={'outline'}
 							className='flex gap-2 flex-row w-max text-sm'
 						>
 							<Link2 /> Admissions Homepage
 						</Badge>
-					</Link>
+					</a>
 				</CardTitle>
 			</CardHeader>
 			<CardContent>
@@ -144,14 +143,18 @@ export default function Admissions({
 			</CardContent>
 			<CardFooter className='flex flex-row justify-between'>
 				{/* <Button>Admissions Considerations</Button> */}
-				<Link href={general.URLs.application} className='ml-auto'>
+				<a
+					href={fixURL(general.URLs.application)}
+					className='ml-auto'
+					target='_blank'
+				>
 					<Badge
 						variant={'outline'}
 						className='flex gap-2 flex-row w-max text-sm'
 					>
 						<ExternalLink /> More Application Information
 					</Badge>
-				</Link>
+				</a>
 			</CardFooter>
 		</Card>
 	);
