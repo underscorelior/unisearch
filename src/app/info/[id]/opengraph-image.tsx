@@ -32,16 +32,10 @@ export default async function OGImage({ params }: { params: { id: string } }) {
 					width: '100%',
 					height: '100%',
 					justifyContent: 'center',
+					alignItems: 'center',
 				}}
 			>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'row',
-						alignItems: 'start',
-						width: '100%',
-					}}
-				>
+				<div tw='flex flex-row items-start w-full p-12'>
 					<img
 						src={
 							// TODO: Find a way to incorporate the logo into the uni db.
