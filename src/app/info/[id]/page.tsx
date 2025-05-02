@@ -28,13 +28,21 @@ export async function generateMetadata({
 
 	const university = await response.json();
 
-
 	const headersList = await headers();
 	const host = headersList.get('host');
 
 	return {
 		title: `${university.general.name} - Information`,
-		description: `Information about ${university.general.name}`,
-		openGraph: { images: [`https://${host}/info/${id}/opengraph-image`], }
+		description: `Information about ${university.general.name}`, // TODO: Later use a snippet of the AI overview or smth.
+		openGraph: {
+			images: [
+				{
+					url: `https://${host}/info/${id}/opengraph-image`,
+					width: 1200,
+					height: 630,
+					alt: university.general.name,
+				},
+			],
+		},
 	};
 }
