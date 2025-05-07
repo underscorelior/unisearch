@@ -15,10 +15,8 @@ import {
 	TreeDeciduous,
 } from 'lucide-react';
 import Image from 'next/image';
-import locale_conv from '@/assets/locale_conv.json';
-import control_conv from '@/assets/control_conv.json';
-import high_deg_conv from '@/assets/high_deg_conv.json';
-import { fixURL } from '@/lib/utils';
+import { locale_conv, control_conv, high_deg_conv } from '@/utils/conversion';
+import { fixURL } from '@/utils/utils';
 
 export default function Header({
 	general,

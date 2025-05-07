@@ -1,5 +1,5 @@
 'use client';
-import { capitalizeFirstLetter } from '@/lib/utils';
+import { capitalizeFirstLetter } from '@/utils/utils';
 import React, { useState } from 'react';
 
 export default function StackedBarChart({

@@ -2,7 +2,7 @@
 
 'use client';
 
-import { getUniversityInfo } from '@/lib/utils';
+import { getUniversityInfo } from '@/utils/utils';
 import { SearchBar } from './search-bar';
 
 import { useEffect, useState } from 'react';

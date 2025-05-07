@@ -1,4 +1,4 @@
-import { COLORS, sortPieChartArray } from '@/lib/utils';
+import { COLORS, sortPieChartArray } from '@/utils/utils';
 import StackedBarChart from '../bar-chart-stacked';
 import LabelPieChart from '../pie-chart';
 import { Card, CardHeader, CardTitle, CardContent } from '../ui/card';

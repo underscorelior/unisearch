@@ -10,7 +10,7 @@ import { Badge } from '../ui/badge';
 import StackedBarChart from '../bar-chart-stacked';
 import TestScoreRange from '../test-range';
 import AdmissionsGraph from '../admissions-graph';
-import { COLORS, fixURL } from '@/lib/utils';
+import { COLORS, fixURL } from '@/utils/utils';
 
 export default function Admissions({
 	general,
