@@ -41,13 +41,21 @@ export default function Header({
 				<div className='flex flex-col md:flex-row items-center gap-4'>
 					<Image
 						src={
-							`https://img.logo.dev/${general.URLs.general
+							`https://img.logo.dev/${('web.mit.edu/' ==
+							general.URLs.general
+								? 'https://www.utdallas.edu'
+								: general.URLs.general
+							)
 								.replace('https://', '')
 								.replace(
 									'http://',
 									''
 								)}?token=pk_SlnGUaGiQEClf4KEK7bUwA&retina=true` ||
-							`${general.URLs.general}${
+							`${
+								'web.mit.edu/' == general.URLs.general
+									? 'https://www.utdallas.edu'
+									: general.URLs.general
+							}${
 								general.URLs.general.endsWith('/') ? '' : '/'
 							}favicon.ico`
 						}

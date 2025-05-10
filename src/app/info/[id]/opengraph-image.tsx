@@ -188,71 +188,80 @@ export default async function GET({ params }: { params: { id: string } }) {
 					</div>
 				</div>
 				<div tw='flex flex-col text-center items-center justify-center'>
-					Acceptance Rate
-					<img
-						src={`https://quickchart.io/chart?w=150&h=150&c=${encodeURIComponent(
-							JSON.stringify({
-								type: 'doughnut',
-								data: {
-									datasets: [
-										{
-											data: [
-												university.admissions
-													.acceptanceRate.overall *
-													100,
-												100 -
+					<div tw='flex flex-col text-center items-center justify-center'>
+						Acceptance Rate
+						<img
+							src={`https://quickchart.io/chart?w=150&h=150&c=${encodeURIComponent(
+								JSON.stringify({
+									type: 'doughnut',
+									data: {
+										datasets: [
+											{
+												data: [
 													university.admissions
 														.acceptanceRate
-														.overall *
-														100,
-											],
-											backgroundColor: [
-												'#00c950',
-												'#ababab',
-											],
-											borderWidth: 0,
-										},
-									],
-								},
-								options: {
-									cutoutPercentage: 75,
-									plugins: {
-										doughnutlabel: {
-											labels: [
-												{
-													text: `${
-														Math.round(
-															university
-																.admissions
-																.acceptanceRate
-																.overall * 1000
-														) / 10
-													}%`,
-													color: '#000',
-													font: {
-														size: 30,
-														weight: 'semibold',
-														family: 'Inter Mono',
-														color: '#00c950',
-													},
-												},
-											],
-										},
-										datalabels: { display: false },
+														.overall * 100,
+													100 -
+														university.admissions
+															.acceptanceRate
+															.overall *
+															100,
+												],
+												backgroundColor: [
+													'#00c950',
+													'#ababab',
+												],
+												borderWidth: 0,
+											},
+										],
 									},
-									format: 'svg',
-								},
-							})
-						)}`}
-						alt={`Acceptance Rate: ${
-							Math.round(
-								university.admissions.acceptanceRate.overall *
-									1000
-							) / 10
-						}%`}
-						width={150}
-						height={150}
-					/>
+									options: {
+										cutoutPercentage: 75,
+										plugins: {
+											doughnutlabel: {
+												labels: [
+													{
+														text: `${
+															Math.round(
+																university
+																	.admissions
+																	.acceptanceRate
+																	.overall *
+																	1000
+															) / 10
+														}%`,
+														color: '#000',
+														font: {
+															size: 25,
+															weight: 'semibold',
+															family: 'Inter Mono',
+															color: '#00c950',
+														},
+													},
+												],
+											},
+											datalabels: { display: false },
+										},
+										format: 'svg',
+									},
+								})
+							)}`}
+							alt={`Acceptance Rate: ${
+								Math.round(
+									university.admissions.acceptanceRate
+										.overall * 1000
+								) / 10
+							}%`}
+							width={100}
+							height={100}
+						/>
+					</div>
+					<div tw='flex flex-row items-center'>
+						Yield Rate:{' '}
+						{Math.round(university.admissions.yieldRate * 1000) /
+							10}
+						%{' '}
+					</div>
 				</div>
 			</div>
 		),
