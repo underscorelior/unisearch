@@ -7,13 +7,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-interface SearchResult {
-	id: string;
-	inst_name: string;
-	city: string;
-	state: string;
-}
-
 export function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [results, setResults] = useState<SearchResult[]>([]);
@@ -147,7 +140,7 @@ export function SearchBar() {
 									>
 										<Link href={`/info/${result.id}`}>
 											<p className='font-medium'>
-												{result.inst_name}
+												{result.name}
 											</p>
 											<p className='text-sm text-muted-foreground'>
 												{result.city}, {result.state}

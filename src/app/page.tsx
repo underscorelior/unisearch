@@ -18,10 +18,10 @@ export default function Home() {
 							UCLA
 						</Link>
 						<Link
-							href={'/info/243744'}
+							href={'/info/110653'}
 							className='font-semibold text-blue-600 underline'
 						>
-							Stanford
+							UCI
 						</Link>
 						<div className='flex flex-col'>
 							<Link
@@ -30,10 +30,6 @@ export default function Home() {
 							>
 								MIT{' '}
 							</Link>
-							<span className='text-muted-foreground font-medium no-underline text-sm'>
-								(In order to search it, you need to search the
-								proper name, sorry.)
-							</span>
 						</div>
 					</div>
 				</div>

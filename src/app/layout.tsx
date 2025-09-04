@@ -29,7 +29,7 @@ export default function RootLayout({
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				{/* <Providers> */}
-				<main className='pb-10'>{children}</main>
+				<main>{children}</main>
 				{/* </Providers> */}
 			</body>
 		</html>

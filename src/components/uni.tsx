@@ -13,9 +13,7 @@ import Header from './sections/header';
 import Demographics from './sections/demographics';
 
 export default function UniversityInfo({ id }: { id: string }) {
-	const [university, setUniversity] = useState<UniversityInfoProps | null>(
-		null
-	);
+	const [university, setUniversity] = useState<UniversityInfo | null>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -36,10 +34,11 @@ export default function UniversityInfo({ id }: { id: string }) {
 			{university ? (
 				<>
 					<Header
-						general={university.general}
-						academics={university.academics}
+						core={university.core}
+						description={university.description}
+						admissions={university.admissions}
 					/>
-
+					{/* 
 					<Admissions
 						general={university.general}
 						admissions={university.admissions}
@@ -51,7 +50,7 @@ export default function UniversityInfo({ id }: { id: string }) {
 						academics={university.academics}
 					/>
 
-					<Demographics enrollment={university.enrollment} />
+					<Demographics enrollment={university.enrollment} /> */}
 				</>
 			) : (
 				<h1>Loading...</h1>

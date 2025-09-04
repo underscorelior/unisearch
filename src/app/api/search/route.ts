@@ -11,7 +11,8 @@ export async function GET(req: NextRequest) {
 
 	try {
 		const response = await fetch(
-			`https://lior.hackclub.app/api/search?search=${search}`
+			// `https://lior.hackclub.app/api/search?search=${search}`
+			`http://localhost:42107/api/search?search=${search}`
 		);
 
 		const data = await response.json();
