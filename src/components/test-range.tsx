@@ -1,15 +1,17 @@
 export default function TestScoreRange({
 	title,
-	data,
-	type = 'sat',
+	q1,
+	q3,
+	min,
+	max,
 }: {
 	title: string;
-	data: { '25th': number; '50th': number; '75th': number };
-	type?: 'act' | 'sat';
+	q1: number;
+	q3: number;
+	min: number
+	max: number;
 }) {
-	const scaleMin = type === 'act' ? 1 : 200;
-	const scaleMax = type === 'act' ? 36 : 800;
-	const scaleRange = scaleMax - scaleMin;
+	const scaleRange = max - min;
 
 	return (
 		<div className='box-border relative'>
@@ -17,12 +19,10 @@ export default function TestScoreRange({
 			<div className='relative h-6 bg-neutral-300 dark:bg-secondary-foreground rounded-sm text-stone-100 text-sm'>
 				<div
 					style={{
-						left: `${
-							((data['25th'] - scaleMin) / scaleRange) * 100
-						}%`,
-						width: `${
-							((data['75th'] - data['25th']) / scaleRange) * 100
-						}%`,
+						left: `${((q1 - min) / scaleRange) * 100
+							}%`,
+						width: `${((q3 - q1) / scaleRange) * 100
+							}%`,
 					}}
 					className='absolute top-0 bottom-0 bg-blue-500 rounded-sm'
 				/>
@@ -30,28 +30,26 @@ export default function TestScoreRange({
 					className='absolute transform -translate-x-1/2 bg-blue-500 p-1.5 rounded'
 					style={{
 						top: '-1.5rem',
-						left: `${
-							((data['25th'] - scaleMin) / scaleRange) * 100
-						}%`,
+						left: `${((q1 - min) / scaleRange) * 100
+							}%`,
 					}}
 				>
-					{data['25th']}
+					{q1}
 				</div>
 				<div
 					className='absolute transform -translate-x-1/2 bg-blue-500 p-1.5 rounded'
 					style={{
 						top: '-1.5rem',
-						left: `${
-							((data['75th'] - scaleMin) / scaleRange) * 100
-						}%`,
+						left: `${((q3 - min) / scaleRange) * 100
+							}%`,
 					}}
 				>
-					{data['75th']}
+					{q3}
 				</div>
 			</div>
 			<div className='text-muted-foreground text-sm font-medium mt-2 justify-between flex'>
-				<span>{scaleMin}</span>
-				<span>{scaleMax}</span>
+				<span>{min}</span>
+				<span>{max}</span>
 			</div>
 		</div>
 	);

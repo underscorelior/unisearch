@@ -1,16 +1,11 @@
 // TODO: Switch away from using shadcn
-
 'use client';
 
 import { getUniversityInfo } from '@/utils/utils';
-import { SearchBar } from './search-bar';
 
 import { useEffect, useState } from 'react';
-import Admissions from './sections/admissions';
-import Enrollment from './sections/enrollment';
-import Financial from './sections/financial';
 import Header from './sections/header';
-import Demographics from './sections/demographics';
+import Admissions from './sections/admissions';
 
 export default function UniversityInfo({ id }: { id: string }) {
 	const [university, setUniversity] = useState<UniversityInfo | null>(null);
@@ -26,34 +21,18 @@ export default function UniversityInfo({ id }: { id: string }) {
 
 	return (
 		<div className='container mx-auto p-4 space-y-8'>
-			{/* <Head>
-				<title>{university.general.name} - Information</title>
-			</Head> */}
-			<SearchBar />
-
 			{university ? (
 				<>
 					<Header
 						core={university.core}
-						description={university.description}
-						admissions={university.admissions}
+						description={university.description || ''}
 					/>
-					{/* 
 					<Admissions
-						general={university.general}
 						admissions={university.admissions}
 					/>
-					<Financial financial={university.financial} />
-
-					<Enrollment
-						enrollment={university.enrollment}
-						academics={university.academics}
-					/>
-
-					<Demographics enrollment={university.enrollment} /> */}
 				</>
 			) : (
-				<h1>Loading...</h1>
+				<h1>Loading...</h1> // TODO: Add better loading indicator
 			)}
 		</div>
 	);

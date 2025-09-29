@@ -1,37 +1,51 @@
 import React from 'react';
 import { Cell, Label, Pie, PieChart, ResponsiveContainer } from 'recharts';
 
-// TODO: RENAME thiS
+
+// TODO: Disable ring when pressing on this
 export default function AdmissionsGraph({
-	data,
+	num,
 	className = '',
-	colors,
 }: {
-	data: { name: string; value: number }[];
+	num: number;
 	className?: string;
-	colors: string[];
 }) {
+	const colors = [
+		'hsl(var(--text-700))', '#a3a3a3'
+	]
+
+	const data = [
+		{
+			name: 'Accepted',
+			value: num,
+		},
+		{
+			name: 'Rejected',
+			value: 100 - num,
+		},
+	]
+
 	return (
 		<ResponsiveContainer width='100%' height='100%' className={className}>
-			<PieChart width={400} height={400}>
+			<PieChart width={400} height={400} >
 				<Pie
 					cx='50%'
 					cy='50%'
 					innerRadius={50}
 					outerRadius={80}
-					fill='#8884d8'
 					dataKey='value'
 					data={data}
 				>
 					<Label
-						value={`${data[0].value.toFixed(1)}%`}
+						value={`${num.toFixed(1)}%`}
 						position='center'
-						className='text-bold font-mono text-2xl fill-foreground'
+						className='text-bold font-mono text-2xl fill-text-800'
 					/>
 					{data.map((entry, index) => (
 						<Cell
 							key={`cell-${index}`}
 							fill={colors[index % colors.length]}
+							className='outline-none stroke-none'
 						/>
 					))}
 				</Pie>

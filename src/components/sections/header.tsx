@@ -5,7 +5,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from '../ui/card';
-import { Badge } from '../ui/badge';
 import {
 	Building,
 	Church,
@@ -15,21 +14,18 @@ import {
 	LucideNetwork,
 	MapPin,
 	Phone,
-	PhoneIcon,
 	TowerControl,
 	TreeDeciduous,
 } from 'lucide-react';
 import Image from 'next/image';
-import { fixURL } from '@/utils/utils';
+import { fixURL, formatPhoneNumber } from '@/utils/utils';
 
 export default function Header({
 	core,
 	description,
-	admissions,
 }: {
 	core: CoreInfo;
 	description: string;
-	admissions: Admissions;
 }) {
 	return (
 		<Card className='w-full max-w-4xl mx-auto'>
@@ -68,8 +64,7 @@ export default function Header({
 									'http://',
 									''
 								)}?token=pk_SlnGUaGiQEClf4KEK7bUwA&retina=true` ||
-							`${core.url}${
-								core.url.endsWith('/') ? '' : '/'
+							`${core.url}${core.url.endsWith('/') ? '' : '/'
 							}favicon.ico`
 						}
 						alt={`${core.name} campus`}
@@ -129,21 +124,13 @@ export default function Header({
 					</div>
 				</div>
 				<a href={fixURL(core.url)} target='_blank'>
-					<Badge
-						variant={'outline'}
-						className='flex gap-2 flex-row w-max text-sm'
-					>
-						<Link2 /> School Homepage
-					</Badge>
+					{/* className='flex gap-2 flex-row w-max text-sm' */}
+					<Link2 /> School Homepage
 				</a>
 				{core.phone && (
 					<a href={`tel:${core.phone}`} target='_blank'>
-						<Badge
-							variant={'outline'}
-							className='flex gap-2 flex-row w-max text-sm'
-						>
-							<PhoneIcon /> {core.phone}
-						</Badge>
+						{/* className='flex gap-2 flex-row w-max text-sm' */}
+						<Phone /> {formatPhoneNumber(core.phone)}
 					</a>
 				)}
 			</CardContent>
