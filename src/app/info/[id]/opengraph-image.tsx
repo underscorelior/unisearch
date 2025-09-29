@@ -37,7 +37,7 @@
 // 	const host = (await headers()).get('host');
 // 	const protocol = host?.includes('localhost') ? 'http' : 'https';
 
-// 	const response = await fetch(`${protocol}://${host}/api/getinfo?id=${id}`);
+// 	const response = await fetch(`${protocol}://${host}/api/get?id=${id}`);
 
 // 	if (!response.ok) {
 // 		throw new Error('Failed to fetch university data');
