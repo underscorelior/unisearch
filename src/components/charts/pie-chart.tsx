@@ -12,9 +12,9 @@ export default function LabelPieChart({
 	colors: string[];
 }) {
 	return (
-		<div className='flex flex-row w-full'>
+		<div className='flex flex-row w-full gap-20'>
 			<ResponsiveContainer
-				width={300}
+				width={200}
 				height={200}
 				className='flex flex-row'
 			>
@@ -46,7 +46,7 @@ export default function LabelPieChart({
 							if (active && payload && payload.length) {
 								const { name, value } = payload[0];
 								return (
-									<div className='bg-background p-2 border border-muted rounded-md'>
+									<div className='bg-background- p-2 border border-muted rounded-md'>
 										<h1 className='text-lg font-semibold'>
 											{name}
 										</h1>
