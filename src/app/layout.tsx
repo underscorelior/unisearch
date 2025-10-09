@@ -26,7 +26,7 @@ export default function RootLayout({
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<head>
-				<link rel='icon' href='/school.svg' />
+				<link rel='icon' href='/university.svg' />
 			</head>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<main className='flex flex-col items-center h-screen min-h-screen min-w-screen font-[family-name:var(--font-geist-sans)]'>
