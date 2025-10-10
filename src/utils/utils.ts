@@ -9,34 +9,11 @@ export function capitalizeFirstLetter(s: string): string {
 	return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
-export function sortChartArray(ipt: { [key: string]: number }): {
-	[key: string]: number;
-} {
-	const out = {} as {
-		[key: string]: number;
-	};
-	const sorted_keys = Object.keys(ipt).toSorted((a, b) => ipt[b] - ipt[a]);
-	sorted_keys.forEach((key) => {
-		out[key] = ipt[key];
-	});
-
-	return out;
-}
-
-export function sortPieChartArray(
-	ipt: {
-		name: string;
-		value: number;
-	}[]
-): {
-	name: string;
-	value: number;
-}[] {
-	return ipt.toSorted((a, b) => b.value - a.value);
-}
-
-export async function getUniversityInfo(id: string, baseurl: string = '') {
-	const response = await fetch(`${baseurl}/api/getinfo?id=${id}`);
+export async function getUniversityInfo(id: string): Promise<UniversityInfo> {
+	const response = await fetch(
+		// `https://lior.hackclub.app/api/get-inst-data?id=${id}`
+		`http://localhost:42107/api/get?id=${id}`
+	);
 
 	if (!response.ok) {
 		throw new Error('Failed to fetch university data');
@@ -54,7 +31,43 @@ export function fixURL(url: string) {
 	return 'https://' + url;
 }
 
+export function formatPhoneNumber(phone: string | number) {
+	const cleaned = ('' + phone).replace(/\D/g, '');
+	const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+	if (match) {
+		return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+	}
+	return null;
+}
+
+export function formatCurrency(value: number | null) {
+	if (value === null) return 'N/A';
+	return new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+		minimumFractionDigits: 0,
+	}).format(value);
+}
+
+export function formatPercent(value: number | null) {
+	if (value === null) return 'N/A';
+	return `${(value * 100).toFixed(1)}%`;
+}
+
+export function formatNumber(value: number | null) {
+	if (value === null) return 'N/A';
+	return new Intl.NumberFormat('en-US').format(value);
+}
+
 export const COLORS = [
+	'#2B67B1',
+	'#9EE094',
+	'#74ACCD',
+	'#6D659F',
+	'#A13F06',
+	'#3F4832',
+	'#F15F08',
+	'#5A787C',
 	'#0088FE',
 	'#00C49F',
 	'#FFBB28',
