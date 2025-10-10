@@ -147,7 +147,7 @@ export function SearchBar() {
 									<p className='font-medium'>
 										{result.name}
 									</p>
-									<p className='text-sm text-muted-foreground'>
+									<p className='text-sm'>
 										{result.city}, {result.state}
 									</p>
 								</Link>

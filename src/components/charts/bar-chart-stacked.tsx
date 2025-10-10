@@ -71,7 +71,7 @@ export default function StackedBarChart({
 								setHover(category);
 							}}
 							onMouseLeave={() => setHover('')}
-							className='relative border-background border-[0.5px] w-full min-w-1 h-8 hover:border transition-all dark:border-muted'
+							className='relative border-[0.5px] w-full min-w-1 h-8 hover:border transition-all'
 						></div>
 					);
 				})}
@@ -79,7 +79,7 @@ export default function StackedBarChart({
 				{hover && mousePos && tooltips && (
 					<div
 						id='tooltip'
-						className='fixed z-50 bg-background p-2 rounded-sm drop-shadow min-w-20'
+						className='fixed z-50 p-2 rounded-sm drop-shadow min-w-20'
 						style={{
 							left: mousePos.x + 10,
 							top: mousePos.y + 10,
