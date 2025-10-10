@@ -5,10 +5,10 @@ import { SearchBar } from './search-bar'
 
 export default function Navbar() {
     return (
-        <nav className='flex flex-col bg-background- w-full pt-5 gap-y-5 shadow-sm'>
-            <div className='grid grid-cols-[2fr,5fr,2fr] w-full items-center max-w-[90%] justify-center gap-10 mx-auto'>
+        <nav className='flex flex-col bg-background- w-full pt-5 gap-y-5 shadow-sm z-10'>
+            <div className='flex flex-row px-5 md:px-0 md:grid md:grid-cols-[2fr,5fr,2fr] w-full items-center max-w-[90%] justify-center gap-10 mx-auto'>
                 <Link href="/" className='mx-auto flex flex-row gap-2 items-center justify-center text-2xl font-bold text-primary-700'>
-                    <University className='size-8 stroke-primary-700' /> Unisearch
+                    <University className='size-8 stroke-primary-700' /> <span className='hidden md:block'>Unisearch</span>
                 </Link>
                 <div className='mx-auto w-full'>
                     <SearchBar />

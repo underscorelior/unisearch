@@ -1,3 +1,5 @@
+// TODO: Clean this up
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -65,7 +67,6 @@ export function SearchBar() {
 
 	function redir() {
 		if (results.length > 0) {
-			console.log(results[0].id);
 			router.push(`/info/${results[0].id}`);
 		}
 	}
@@ -75,6 +76,8 @@ export function SearchBar() {
 				onChange={() => { }}
 				onSubmit={(e) => {
 					e.preventDefault();
+					setShowDropdown(false);
+					e.currentTarget.blur();
 					redir();
 				}}
 				className='flex gap-2'
@@ -137,20 +140,17 @@ export function SearchBar() {
 							</li>
 						) : (
 							results.map((result) => (
-								<li
-									key={result.id}
-									className='p-2 rounded-md bg-primary-100 hover:bg-primary-200 h-16 flex items-center justify-between'
+								<Link href={`/info/${result.id}`} key={result.id}
+									className='p-2 rounded-md bg-primary-100 hover:bg-primary-200 min-h-16 flex flex-col justify-between'
 									onClick={() => { setShowDropdown(false) }}
 								>
-									<Link href={`/info/${result.id}`}>
-										<p className='font-medium'>
-											{result.name}
-										</p>
-										<p className='text-sm text-muted-foreground'>
-											{result.city}, {result.state}
-										</p>
-									</Link>
-								</li>
+									<p className='font-medium'>
+										{result.name}
+									</p>
+									<p className='text-sm text-muted-foreground'>
+										{result.city}, {result.state}
+									</p>
+								</Link>
 							))
 						)}
 					</ul>

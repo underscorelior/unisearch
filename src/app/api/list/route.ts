@@ -2,15 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
 	const filter = req.nextUrl.searchParams.get('filter');
-	const offset = req.nextUrl.searchParams.get('offset') || '0';
+	const page = req.nextUrl.searchParams.get('page') || '0';
 	const limit = req.nextUrl.searchParams.get('limit') || '50';
 
 	try {
 		const response = await fetch(
 			// `https://lior.hackclub.app/api/list?id=${id}`
-			`http://localhost:42107/api/list?${
-				filter ? `filter=${filter}&` : ''
-			}offset=${offset}&limit=${limit}`
+			`http://localhost:42107/api/list?page=${page}&limit=${limit}${
+				filter && filter.length > 0 ? `&filter=${filter}` : ''
+			}`
 		);
 
 		const data = await response.json();

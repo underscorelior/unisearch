@@ -234,7 +234,7 @@ interface SearchResult {
 	name: string;
 	city: string;
 	state: string;
-	online: boolean | null; // TODO: Add 'online' badge if its an online college to differentiate
+	online: boolean | null;
 }
 
 interface CollegeList {
