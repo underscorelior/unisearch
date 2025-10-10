@@ -1,3 +1,5 @@
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -166,6 +168,14 @@ body {
 	}
 
 	.link-btn {
-		@apply p-2 border-primary-300 rounded-md border-2 flex flex-row items-center justify-center text-sm gap-2 bg-primary-100 hover:bg-primary-200 transition-all duration-200 hover:scale-105;
+		@apply px-2 py-1 border-primary-400 rounded-sm border flex flex-row items-center justify-center text-sm font-medium gap-2 bg-background- hover:bg-background-50/75 transition-all duration-200;
+	}
+
+	.btn {
+		@apply px-2 py-1 border-primary-400 rounded-sm border flex flex-row items-center justify-center text-sm font-medium gap-2 bg-background- hover:bg-background-50/75 transition-all duration-200;
+	}
+
+	.sub-badge {
+		@apply inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 bg-background-50;
 	}
 }
