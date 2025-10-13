@@ -67,7 +67,7 @@ export function TuitionFeesCosts({ costs }: { costs: Costs }) {
                     </div>
                 </div>
                 <div className='h-[99%] w-0.5 content-[""] bg-primary-400/90 my-auto hidden md:block' />
-                <div className='flex justify-between flex-col gap-1'>
+                <div className='flex justify-between md:justify-start flex-col gap-1'>
                     <div className='font-bold text-base'>Total Costs</div>
                     <div>
                         {costs.tuit_vary && costs.in.total !== costs.out.total && costs.in.pct !== null && (
