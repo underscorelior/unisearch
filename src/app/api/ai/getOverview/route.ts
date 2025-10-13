@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
 	try {
 		const response = await fetch(
 			`https://lior.hackclub.app/api/ai/overview?id=${id}`
+			// `http://localhost:42107/api/ai/overview?id=${id}`
 		);
 
 		const data = await response.json();
