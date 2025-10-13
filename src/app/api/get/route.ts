@@ -11,8 +11,8 @@ export async function GET(req: NextRequest) {
 
 	try {
 		const response = await fetch(
-			// `https://lior.hackclub.app/api/get-inst-data?id=${id}`
-			`http://localhost:42107/api/get?id=${id}`
+			`https://lior.hackclub.app/api/get?id=${id}`
+			// `http://localhost:42107/api/get?id=${id}`
 		);
 
 		const data = await response.json();
