@@ -28,6 +28,11 @@ export function fixURL(url: string) {
 	if (url.startsWith('http')) {
 		return url;
 	}
+
+	if (url.endsWith('/')) {
+		return 'https://' + url.slice(0, -1);
+	}
+
 	return 'https://' + url;
 }
 

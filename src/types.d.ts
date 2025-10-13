@@ -143,6 +143,7 @@ type EnrollmentInfo = {
 
 type Costs = {
 	net_calc_url: string;
+	faid_url: string | null;
 	tuit_vary: boolean | null;
 	offers_housing: boolean | null;
 	housing_capacity: number | null;
@@ -156,15 +157,13 @@ type Costs = {
 		tuition: number;
 		fees: number;
 		pct: number;
-		total_cost: number;
-		// net_cost: number;
+		total: number;
 	};
 	out: {
 		tuition: number;
 		fees: number;
 		pct: number;
-		total_cost: number;
-		// net_cost: number;
+		total: number;
 	};
 	on_dorm_mls_cost: number | null;
 	on_other_cost: number | null;
@@ -187,7 +186,6 @@ type Outcomes = {
 };
 
 type Services = {
-	faid_url: string | null;
 	rotc: boolean | null;
 	study_abroad: boolean | null;
 	teacher_cert: boolean | null;
