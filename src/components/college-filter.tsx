@@ -98,9 +98,9 @@ export default function CollegeFilter({ setQueries, states }: {
                 </div>
             </div >
 
-            <Link href="/blog/ranking" className='text-text-600 m-2 p-4 text-sm flex-row items-center justify-center gap-2 hidden md:flex'>
+            {/* <Link href="/blog/ranking" className='text-text-600 m-2 p-4 text-sm flex-row items-center justify-center gap-2 hidden md:flex'>
                 <CircleQuestionMark className='size-4' /> Ranking Methodology
-            </Link>
+            </Link> */} {/* TODO: Add back in when blog is done */}
         </div>
     );
 }
