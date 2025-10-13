@@ -13,7 +13,7 @@ export default function TestScoreRange({
 
 	return (
 		<div className='box-border relative'>
-			<div className='relative h-2 bg-background-50 rounded-[2px] border border-primary-400 text-sm'>
+			<div className='relative h-[10px] bg-background-50 rounded-[2px] border border-primary-400 text-sm'>
 				<div
 					style={{
 						left: `${((q1 - min) / scaleRange) * 100
