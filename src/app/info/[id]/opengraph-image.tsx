@@ -75,13 +75,12 @@ export default async function GET({ params }: { params: { id: string } }) {
                 <div tw='flex flex-row'>
                     <img
                         src={
-                            // TODO: Find a way to incorporate the logo into the uni db.
-                            `https://img.logo.dev/${core.url
+                            `https://img.logo.dev/${core.url // TODO: Implement proper logo fallback
                                 .replace('https://', '')
                                 .replace(
                                     'http://',
                                     ''
-                                )}?token=pk_SlnGUaGiQEClf4KEK7bUwA&retina=true` ||
+                                )}?token=${process.env.NEXT_PUBLIC_LOGO_KEY}&retina=true` ||
                             `${core.url}${core.url.endsWith('/') ? '' : '/'
                             }favicon.ico`
                         }

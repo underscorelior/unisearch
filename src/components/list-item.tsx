@@ -12,12 +12,12 @@ export default function CollegeListItem({ college, index }: { college: ListItem,
             <div className='flex items-center gap-4'>
                 <Image
                     src={
-                        `https://img.logo.dev/${college.url
+                        `https://img.logo.dev/${college.url // TODO: Implement proper logo fallback
                             .replace('https://', '')
                             .replace(
                                 'http://',
                                 ''
-                            )}?token=pk_SlnGUaGiQEClf4KEK7bUwA&retina=true` ||
+                            )}?token=${process.env.NEXT_PUBLIC_LOGO_KEY}&retina=true` ||
                         `${college.url}${college.url.endsWith('/') ? '' : '/'
                         }favicon.ico`
                     }

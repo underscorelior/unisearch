@@ -18,8 +18,9 @@ export async function GET(req: NextRequest) {
 
 	try {
 		const response = await fetch(
-			`https://lior.hackclub.app/api/get-values?col=${col}&table=${table}`
-			// `http://localhost:42107/api/get-values?col=${col}&table=${table}`
+			`${
+				process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:42107'
+			}/api/get-values?col=${col}&table=${table}`
 		);
 
 		const data = await response.json();

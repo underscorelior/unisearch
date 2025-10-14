@@ -7,12 +7,11 @@ export async function GET(req: NextRequest) {
 
 	try {
 		const response = await fetch(
-			`https://lior.hackclub.app/api/list?page=${page}&limit=${limit}${
+			`${
+				process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:42107'
+			}/api/list?page=${page}&limit=${limit}${
 				filter && filter.length > 0 ? `&filter=${filter}` : ''
 			}`
-			// `http://localhost:42107/api/list?page=${page}&limit=${limit}${
-			// 	filter && filter.length > 0 ? `&filter=${filter}` : ''
-			// }`
 		);
 
 		const data = await response.json();
