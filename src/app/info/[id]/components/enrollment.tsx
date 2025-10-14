@@ -89,7 +89,7 @@ export function EthnicityBreakdown({ enrollment }: { enrollment: EnrollmentInfo 
                 <CardDescription>Student enrollment by race and ethnicity</CardDescription>
             </CardHeader>
             <CardContent className='flex flex-col md:flex-row items-center justify-between w-full'>
-                <ResponsiveContainer width="100%" height={250}>
+                <ResponsiveContainer width="100%" height={250} className="[&_*]:!outline-none">
                     <PieChart>
                         <Pie
                             data={data}
@@ -106,7 +106,7 @@ export function EthnicityBreakdown({ enrollment }: { enrollment: EnrollmentInfo 
                                 if (active && payload && payload.length) {
                                     const { name, value } = payload[0];
                                     return (
-                                        <div className='bg-background- p-2 border rounded-md'>
+                                        <div className='bg-background-100 opacity-[97.5%] p-2 border border-primary-200 rounded-md'>
                                             <h1 className='text-lg font-semibold'>
                                                 {name}
                                             </h1>
@@ -129,7 +129,7 @@ export function EthnicityBreakdown({ enrollment }: { enrollment: EnrollmentInfo 
                         return (
                             <span
                                 key={idx}
-                                className='flex flex-row items-center text-xs font-sans text-neutral-700 dark:text-neutral-300'
+                                className='flex flex-row items-center text-xs font-sans'
                             >
                                 <div
                                     style={{
