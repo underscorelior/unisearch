@@ -7,6 +7,7 @@ import { Award, ExternalLink, GraduationCap, Search } from 'lucide-react'
 import React from 'react'
 import Breakdown from './elements/breakdown'
 import Link from 'next/link'
+import AdmissionsConsiderations from './elements/considerations'
 
 export function ApplicationStats({ admissions }: { admissions: Admissions }) {
     return (
@@ -141,50 +142,11 @@ export function TestScores({ admissions }: { admissions: Admissions }) {
                 </CardContent>
             </div>
             <CardFooter>
-                <div className="flex items-center gap-2 text-sm">
-                    <div className={`inline-flex items-center justify-center rounded-md bg-background- border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 ${admissions.ap_credit ? "border-emerald-500/50 text-emerald-600" : "border-rose-500/50 text-rose-600"}`}>
-                        AP Credit {admissions.ap_credit ? "Accepted" : "Not Accepted"}
-                    </div>
+                <div className={`inline-flex items-center justify-center rounded-md bg-background- border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 ${admissions.ap_credit ? "border-emerald-500/50 text-emerald-600" : "border-rose-500/50 text-rose-600"}`}>
+                    AP Credit {admissions.ap_credit ? "Accepted" : "Not Accepted"}
                 </div>
+                <AdmissionsConsiderations admissions={admissions} className="flex md:hidden ml-auto" />
             </CardFooter>
-        </Card>
-    )
-}
-
-export function AdmissionsConsiderations({ admissions }: { admissions: Admissions }) {
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-xl md:text-2xl">
-                    <Search className="size-6" />
-                    Admissions Considerations
-                </CardTitle>
-                <CardDescription>Factors considered in the admission process</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="grid md:grid-cols-2 gap-4">
-                    {Object.entries(admissions.considerations).map(([key, value]) => {
-                        if (!value.name || !value.value) return null
-                        const importance = value.value.toLowerCase()
-                        const color = importance.includes("required")
-                            ? "text-emerald-600"
-                            : importance.includes("not considered")
-                                ? "text-rose-600"
-                                : importance.includes("considered")
-                                    ? "text-sky-600"
-                                    : "text-zinc-600"
-
-                        return (
-                            <div key={key} className="flex flex-col md:flex-row justify-between md:items-center gap-y-1">
-                                <span className="text-sm">{value.name}</span>
-                                <div className={`sub-badge ${color} border-current`}>
-                                    {value.value}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </CardContent>
         </Card>
     )
 }
