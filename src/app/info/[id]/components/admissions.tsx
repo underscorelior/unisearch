@@ -145,7 +145,7 @@ export function TestScores({ admissions }: { admissions: Admissions }) {
                 <div className={`inline-flex items-center justify-center rounded-md bg-background- border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 ${admissions.ap_credit ? "border-emerald-500/50 text-emerald-600" : "border-rose-500/50 text-rose-600"}`}>
                     AP Credit {admissions.ap_credit ? "Accepted" : "Not Accepted"}
                 </div>
-                <AdmissionsConsiderations admissions={admissions} className="flex md:hidden ml-auto" />
+                <AdmissionsConsiderations admissions={admissions} className="flex ml-auto" />
             </CardFooter>
         </Card>
     )

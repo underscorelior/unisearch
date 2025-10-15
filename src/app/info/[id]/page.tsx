@@ -64,7 +64,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
                             </div>
                             <span>•</span>
                             <span>{university.core.inst_control}</span>
-                            <span>•</span>
+                            {university.core.year ? <span>•</span> : <></>}
                             <span>{university.core.year}</span>
                         </div>
                     </div>

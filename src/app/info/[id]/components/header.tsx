@@ -149,7 +149,7 @@ export default function Header({ university }: { university: UniversityInfo }) {
                         <div>
                             <CardHeader>
                                 <CardTitle>About</CardTitle>
-                                <CardDescription className='flex flex-col md:flex-row md:items-center gap-2 w-max pt-1'>
+                                <CardDescription className='flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 pt-1'>
                                     {university.core.relig_control && (
                                         <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
                                             <BookOpen className='size-4 stroke-2' />{' '}
