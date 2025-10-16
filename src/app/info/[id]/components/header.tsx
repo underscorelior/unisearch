@@ -144,70 +144,67 @@ export default function Header({ university }: { university: UniversityInfo }) {
                 </Card>
             </div >
             <div className='flex flex-col md:grid md:grid-cols-[5fr_3fr] mb-8 gap-4 h-full items-stretch'>
-                {university.description && (
-                    <Card className='justify-between flex flex-col'>
-                        <div>
-                            <CardHeader>
-                                <CardTitle>About</CardTitle>
-                                <CardDescription className='flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 pt-1'>
-                                    {university.core.relig_control && (
-                                        <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
-                                            <BookOpen className='size-4 stroke-2' />{' '}
-                                            Affiliation: {university.core.relig_control}
-                                        </div>
-                                    )}
+                <Card className='justify-between flex flex-col'>
+                    <div>
+                        <CardHeader>
+                            <CardTitle>About</CardTitle>
+                            <CardDescription className='flex flex-col md:flex-row md:flex-wrap md:items-center gap-2 pt-1'>
+                                {university.core.relig_control && (
                                     <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
-                                        <Calendar className='size-4 stroke-2' />{' '}
-                                        Calendar System: {university.core.cal_sys}
+                                        <BookOpen className='size-4 stroke-2' />{' '}
+                                        Affiliation: {university.core.relig_control}
                                     </div>
-                                    <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
-                                        <Volleyball className='size-4 stroke-2' /> NCAA:{' '}
-                                        {university.core.ncaa_div
-                                            ? `Division ${university.core.ncaa_div}`
-                                            : 'N/A'}
-                                    </div>
-                                    {university.core.hgh_deg && (
-                                        <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
-                                            <GraduationCap className='size-4 stroke-2' />{' '}
-                                            Highest Degree: {university.core.hgh_deg}
-                                        </div>
-                                    )}
-
-                                    {university.enrollment.online && (
-                                        <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
-                                            <Globe className='size-4 stroke-2' /> Online University
-                                        </div>
-                                    )}
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <p className='leading-relaxed'>
-                                    {university.description}
-                                </p>
-                            </CardContent>
-                        </div>
-                        <CardFooter className='flex flex-col md:flex-row gap-2 md:gap-4 mt-4 md:mt-0 items-start md:items-center'>
-                            {university.core.url && (
-                                <Link
-                                    href={fixURL(university.core.url)}
-                                    target='_blank'
-                                >
-                                    <button className='link-btn'>
-                                        <ExternalLink className='size-4' />
-                                        Visit Website ({fixURL(university.core.url).replace('https://', '')})
-                                    </button>
-                                </Link>
-                            )}
-                            {university.core.phone && (
-                                <div className="link-btn flex items-center gap-3 hover:bg-background-">
-                                    <Phone className="h-5 w-5" />
-                                    <span>{formatPhoneNumber(university.core.phone)}</span>
+                                )}
+                                <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
+                                    <Calendar className='size-4 stroke-2' />{' '}
+                                    Calendar System: {university.core.cal_sys}
                                 </div>
-                            )}
-                        </CardFooter>
-                    </Card>
-                )
-                }
+                                <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
+                                    <Volleyball className='size-4 stroke-2' /> NCAA:{' '}
+                                    {university.core.ncaa_div
+                                        ? `Division ${university.core.ncaa_div}`
+                                        : 'N/A'}
+                                </div>
+                                {university.core.hgh_deg && (
+                                    <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
+                                        <GraduationCap className='size-4 stroke-2' />{' '}
+                                        Highest Degree: {university.core.hgh_deg}
+                                    </div>
+                                )}
+
+                                {university.enrollment.online && (
+                                    <div className='text-sm flex items-center gap-2 border px-2 py-0.5 rounded-sm bg-background- border-primary-400 w-fit'>
+                                        <Globe className='size-4 stroke-2' /> Online University
+                                    </div>
+                                )}
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <p className='leading-relaxed'>
+                                {university.description || 'No description available.'}
+                            </p>
+                        </CardContent>
+                    </div>
+                    <CardFooter className='flex flex-col md:flex-row gap-2 md:gap-4 mt-4 md:mt-0 items-start md:items-center'>
+                        {university.core.url && (
+                            <Link
+                                href={fixURL(university.core.url)}
+                                target='_blank'
+                            >
+                                <button className='link-btn'>
+                                    <ExternalLink className='size-4' />
+                                    Visit Website ({fixURL(university.core.url).replace('https://', '')})
+                                </button>
+                            </Link>
+                        )}
+                        {university.core.phone && (
+                            <div className="link-btn flex items-center gap-3 hover:bg-background-">
+                                <Phone className="h-5 w-5" />
+                                <span>{formatPhoneNumber(university.core.phone)}</span>
+                            </div>
+                        )}
+                    </CardFooter>
+                </Card>
                 <Card className='flex flex-col justify-between'>
                     <div className="flex-grow flex flex-col">
                         <CardHeader>
