@@ -1,5 +1,3 @@
-// TODO: Clean this up
-
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -73,7 +71,6 @@ export function SearchBar() {
 	return (
 		<div className='relative w-full max-w-3xl'>
 			<form
-				onChange={() => { }}
 				onSubmit={(e) => {
 					e.preventDefault();
 					setShowDropdown(false);

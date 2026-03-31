@@ -1,6 +1,5 @@
-// TODO: Redo the query system
 'use client';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CollegeFilter from './college-filter';
 import CollegeListItem from './list-item';
 import { useInView } from "react-intersection-observer";

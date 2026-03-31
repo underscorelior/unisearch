@@ -3,7 +3,6 @@ import SimpleStackedBarChart from '@/components/charts/simple-stacked'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { capitalizeFirstLetter, COLORS, formatNumber } from '@/utils/utils'
 import { Globe2, Users } from 'lucide-react'
-import React from 'react'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts"
 
 export function EnrollmentOverview({ enrollment }: { enrollment: EnrollmentInfo }) {

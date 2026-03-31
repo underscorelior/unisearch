@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { formatPercent } from '@/utils/utils'
 import { BookOpen, GraduationCap } from 'lucide-react'
-import React from 'react'
 
 export function RetGradRate({ outcomes }: { outcomes: Outcomes }) {
     const colors = ["hsl(var(--primary))", "hsl(var(--primary-200))"]

@@ -1,6 +1,5 @@
 import { University } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 import { SearchBar } from './search-bar'
 
 export default function Navbar() {

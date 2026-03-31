@@ -1,6 +1,5 @@
 import { MapPin } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 import Image from 'next/image'
 
 export default function CollegeListItem({ college, index }: { college: ListItem, index: number }) {

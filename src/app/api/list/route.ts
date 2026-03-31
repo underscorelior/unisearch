@@ -1,3 +1,4 @@
+import { BACKEND_URL } from '@/utils/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -6,25 +7,14 @@ export async function GET(req: NextRequest) {
 	const limit = req.nextUrl.searchParams.get('limit') || '50';
 
 	try {
-		const response = await fetch(
-			`${
-				process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:1234'
-			}/list?page=${page}&limit=${limit}${
-				filter && filter.length > 0 ? `&filter=${filter}` : ''
-			}`,
-		);
-
+		const url = `${BACKEND_URL}/list?page=${page}&limit=${limit}${filter ? `&filter=${filter}` : ''}`;
+		const response = await fetch(url);
 		const data = await response.json();
-
-		return NextResponse.json({
-			data: data,
-			success: true,
-		});
+		return NextResponse.json({ data, success: true });
 	} catch (error) {
-		return NextResponse.json({
-			message: 'An error occurred while processing the request',
-			error: (error as Error).message,
-			success: false,
-		});
+		return NextResponse.json(
+			{ message: 'An error occurred while processing the request', error: (error as Error).message, success: false },
+			{ status: 500 },
+		);
 	}
 }

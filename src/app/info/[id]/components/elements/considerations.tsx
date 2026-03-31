@@ -1,7 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Search } from 'lucide-react';
-import React from 'react'
 
 export default function AdmissionsConsiderations({ admissions, className }: { admissions: Admissions, className?: string }) {
     return (

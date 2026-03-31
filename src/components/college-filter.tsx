@@ -1,6 +1,6 @@
 // TODO: Redo the queries
 'use client'
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
     Select,
     SelectContent,
@@ -8,8 +8,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import Link from 'next/link';
-import { CircleQuestionMark } from 'lucide-react';
+// import Link from 'next/link';
+// import { CircleQuestionMark } from 'lucide-react';
 
 
 export default function CollegeFilter({ setQueries, states }: {
@@ -60,8 +60,7 @@ export default function CollegeFilter({ setQueries, states }: {
 
     const handleSelect = useCallback((value: string) => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        setState(value == 'all' ? '' : value);
-        console.log(value);
+        setState(value === 'all' ? '' : value);
     }, []);
 
     return (

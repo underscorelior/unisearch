@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { BarChart3, ChartColumnBig } from 'lucide-react'
-import React from 'react'
 import { COLORS } from '@/utils/utils'
 import MultiBarChart from '@/components/charts/multi-bar-chart'
 import Comparisons from './comparisons'

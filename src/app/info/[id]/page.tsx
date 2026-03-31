@@ -1,8 +1,5 @@
 import { getUniversityInfo } from "@/utils/utils"
-import {
-    Loader2,
-    MapPin,
-} from "lucide-react"
+import { MapPin } from "lucide-react"
 import Image from "next/image"
 
 import type { Metadata } from 'next'
@@ -47,11 +44,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
     const university = await getUniversityInfo(id);
 
     return (
-        <main className='w-full bg-background-50'>{university ? (
+        <main className='w-full bg-background-50'>
             <div className="min-h-screen pb-4">
                 <div className="relative h-[400px] overflow-hidden">
                     <Image src={`/header-images/${id}.webp`} alt={university.core.name} className="w-full h-full object-cover" fill={true} />
-                    {/* <img src={`/header-images/${id}.webp`} alt={university.core.name} className="w-full h-full object-cover" fill={true} /> */}
+                    {/* <img src={`/header-images/${id}.webp`} alt={university.core.name} className="w-full h-full object-cover" /> */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                     <div className="absolute inset-0 flex flex-col justify-end p-8 container mx-auto">
                         <h1 className="text-3xl md:text-5xl font-bold text-white text-balance mb-2">{university.core.name}</h1>
@@ -75,7 +72,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                     <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
                         <EnrollmentOverview enrollment={university.enrollment} />
-
                         <EthnicityBreakdown enrollment={university.enrollment} />
                     </div>
 
@@ -89,19 +85,13 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
                     <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-4">
                         <Services services={university.services} />
-                        <div className="flex flex-col gap-4" >
+                        <div className="flex flex-col gap-4">
                             <FinancialAid costs={university.costs} />
                             <ResearchEndowment core={university.core} enrollment={university.enrollment} />
                         </div>
                     </div>
                 </div>
             </div>
-        ) : (
-            <div className="flex flex-col items-center justify-center h-96">
-                <Loader2 className="h-10 w-10 text-primary-500 animate-spin mb-4" />
-                <p className="text-zinc-400">Loading college information...</p>
-            </div>
-        )}
         </main>
     )
 }

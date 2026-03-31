@@ -222,23 +222,12 @@ type Ranking = {
 	score: number | null;
 };
 
-type DBError = {
-	message: string;
-	status: number;
-};
-
 interface SearchResult {
 	id: number;
 	name: string;
 	city: string;
 	state: string;
 	online: boolean | null;
-}
-
-interface CollegeList {
-	count: number;
-	offset: number; // MAYBE NOT NEEDED
-	list: ListItem[];
 }
 
 interface ListItem {

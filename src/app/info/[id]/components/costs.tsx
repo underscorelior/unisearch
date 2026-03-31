@@ -3,7 +3,6 @@ import { Separator } from '@/components/ui/separator'
 import { fixURL, formatCurrency, formatNumber, formatPercent } from '@/utils/utils'
 import { BadgeDollarSignIcon, Calculator, ExternalLink, Microscope, Receipt } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
 
 export function TuitionFeesCosts({ costs }: { costs: Costs }) {
     return (

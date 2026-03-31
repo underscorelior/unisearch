@@ -4,7 +4,6 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { Separator } from '@/components/ui/separator'
 import { fixURL, formatCurrency, formatNumber, formatPercent } from '@/utils/utils'
 import { Award, ExternalLink, GraduationCap } from 'lucide-react'
-import React from 'react'
 import Breakdown from './elements/breakdown'
 import Link from 'next/link'
 import AdmissionsConsiderations from './elements/considerations'

@@ -1,5 +1,4 @@
 import { capitalizeFirstLetter } from '@/utils/utils';
-import React from 'react'
 import { BarChart, Bar, XAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function MultiBarChart({ data, colors, margin = 20, height = 400, className }: {
