@@ -75,9 +75,9 @@ export default function MultiBarChart({ data, colors, margin = 20, height = 400,
                     }} />
 
                     {formattedData.length > 0 && Object.keys(formattedData[0]).filter(key => key !== 'name').map((key, index) => (
-                        <Bar key={key} dataKey={key} fill={colors[index % colors.length]} label={(props: { x?: number | string; y?: number | string; width?: number | string; value?: number | string }) => {
-                            const { x, y, width, value } = props;
-                            if (typeof value !== 'number' || value === 0 || typeof x !== 'number' || typeof y !== 'number' || typeof width !== 'number') return null;
+                        <Bar key={key} dataKey={key} fill={colors[index % colors.length]} label={(props) => {
+                            const { x, y, width, value } = props as { x?: number; y?: number; width?: number; value?: number };
+                            if (typeof value !== 'number' || value === 0 || typeof x !== 'number' || typeof y !== 'number' || typeof width !== 'number') return '';
                             return (
                                 <text x={x + width / 2} y={y - 8} fill="#000" textAnchor="middle" dominantBaseline="middle" className='text-xs md:text-sm font-medium'>
                                     {new Intl.NumberFormat('en').format(value)}
