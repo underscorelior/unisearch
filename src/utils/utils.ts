@@ -9,20 +9,16 @@ export function capitalizeFirstLetter(s: string): string {
 	return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
+export const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:1234';
+
 export async function getUniversityInfo(id: string): Promise<UniversityInfo> {
-	const response = await fetch(
-		`${
-			process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:42107'
-		}/api/get?id=${id}`
-	);
+	const response = await fetch(`${BACKEND_URL}/get?id=${id}`);
 
 	if (!response.ok) {
 		throw new Error('Failed to fetch university data');
 	}
 
-	const data = await response.json();
-
-	return data;
+	return response.json();
 }
 
 export function fixURL(url: string) {

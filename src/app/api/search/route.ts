@@ -12,8 +12,8 @@ export async function GET(req: NextRequest) {
 	try {
 		const response = await fetch(
 			`${
-				process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:42107'
-			}/api/search?search=${search}`
+				process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:1234'
+			}/search?search=${search}`,
 		);
 
 		const data = await response.json();
