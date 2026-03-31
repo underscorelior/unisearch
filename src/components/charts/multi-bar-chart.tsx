@@ -48,10 +48,10 @@ export default function MultiBarChart({ data, colors, margin = 20, height = 400,
                                         {payload.map((entry, index) => (
                                             <p key={`item-${index}`} className="text-sm flex flex-row items-center gap-2">
                                                 <span style={{ backgroundColor: entry.color }} className='size-3 rounded-sm min-w-1'></span>
-                                                {entry.name}: {new Intl.NumberFormat('en').format(entry.value)}
+                                                {entry.name}: {new Intl.NumberFormat('en').format(Number(entry.value) || 0)}
                                             </p>
                                         ))}
-                                        <p className="text-sm">Total: {new Intl.NumberFormat('en').format(payload.reduce((sum, entry) => sum + entry.value, 0))}</p>
+                                        <p className="text-sm">Total: {new Intl.NumberFormat('en').format(payload.reduce((sum, entry) => sum + (Number(entry.value) || 0), 0))}</p>
                                     </div>
                                 );
                             }

@@ -3,8 +3,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Search } from 'lucide-react';
 import React from 'react'
 
-
-
 export default function AdmissionsConsiderations({ admissions, className }: { admissions: Admissions, className?: string }) {
     return (
         <Dialog>
@@ -34,8 +32,6 @@ export default function AdmissionsConsiderations({ admissions, className }: { ad
         </Dialog >)
 }
 
-
-
 function Considerations({ admissions }: { admissions: Admissions }) {
     return (
         <div className="grid md:grid-cols-2 gap-4">
@@ -44,10 +40,10 @@ function Considerations({ admissions }: { admissions: Admissions }) {
                 const importance = value.value.toLowerCase()
                 const color = importance.includes("required")
                     ? "text-emerald-600"
-                    : importance.includes("not considered")
-                        ? "text-rose-600"
-                        : importance.includes("considered")
-                            ? "text-sky-600"
+                    : importance.includes("optional")
+                        ? "text-sky-600"
+                        : importance.includes("not considered")
+                            ? "text-rose-600"
                             : "text-zinc-600"
 
                 return (
