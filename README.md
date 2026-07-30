@@ -17,7 +17,7 @@ Some logos come from [logo.dev](https://logo.dev/), others are favicons.
 -   Frontend/Backend: Next.js
 -   Backend/Database: SQLite DB and an Express.js server found at the [uni-server](https://github.com/underscorelior/uni-server) GitHub repo
 -   Web Hosting: Vercel
--   Database Hosting: [HackClub's Nest](https://guides.hackclub.app/index.php/Main_Page)
+-   Database Hosting: DigitalOcean droplet
 
 ## How to run
 
