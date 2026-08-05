@@ -14,9 +14,9 @@ export async function GET(req: NextRequest) {
 	}
 
 	try {
-		const response = await fetch(`${BACKEND_URL}/values?col=${col}&table=${table}`);
+		const response = await fetch(`${BACKEND_URL}/get-values?col=${col}&table=${table}`);
 		const data = await response.json();
-		return NextResponse.json({ data: data.data, success: true });
+		return NextResponse.json({ data, success: true });
 	} catch (error) {
 		return NextResponse.json(
 			{ message: 'An error occurred while processing the request', error: (error as Error).message, success: false },

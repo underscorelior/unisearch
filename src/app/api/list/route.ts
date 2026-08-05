@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
 		const url = `${BACKEND_URL}/list?page=${page}&limit=${limit}${filter ? `&filter=${filter}` : ''}`;
 		const response = await fetch(url);
 		const data = await response.json();
-		return NextResponse.json({ data: data.data, success: true });
+		return NextResponse.json({ data, success: true });
 	} catch (error) {
 		return NextResponse.json(
 			{ message: 'An error occurred while processing the request', error: (error as Error).message, success: false },
