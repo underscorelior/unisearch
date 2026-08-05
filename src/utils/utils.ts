@@ -18,7 +18,7 @@ export async function getUniversityInfo(id: string): Promise<UniversityInfo> {
 		throw new Error('Failed to fetch university data');
 	}
 
-	return response.json();
+	return (await response.json()).data;
 }
 
 export function fixURL(url: string) {
