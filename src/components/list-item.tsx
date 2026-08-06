@@ -10,13 +10,14 @@ export default function CollegeListItem({ college, index }: { college: ListItem,
         >
             <div className='flex items-center gap-4'>
                 <Image
+                    unoptimized
                     src={
                         `https://img.logo.dev/${college.url // TODO: Implement proper logo fallback
                             .replace('https://', '')
                             .replace(
                                 'http://',
                                 ''
-                            )}?token=${process.env.NEXT_PUBLIC_LOGO_KEY}&retina=true` ||
+                            )}?token=${process.env.NEXT_PUBLIC_LOGO_KEY}&size=48&retina=true` ||
                         `${college.url}${college.url.endsWith('/') ? '' : '/'
                         }favicon.ico`
                     }
