@@ -1,17 +1,24 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import CollegeFilter from './college-filter';
 import CollegeListItem from './list-item';
 import { useInView } from "react-intersection-observer";
 import { Loader2Icon } from 'lucide-react';
 
-export default function CollegeList() {
-	const [listed, setListed] = useState<ListItem[]>([]);
+export default function CollegeList({
+	initialList = [],
+	initialCount = 0,
+}: {
+	initialList?: ListItem[];
+	initialCount?: number;
+}) {
+	const [listed, setListed] = useState<ListItem[]>(initialList);
 	const [queries, setQueries] = useState<{ [key: string]: string | number }>({});
 	const [states, setStates] = useState<string[]>([]);
-	const [uniCount, setUniCount] = useState<number>(1);
-	const [page, setPage] = useState<number>(0);
+	const [uniCount, setUniCount] = useState<number>(initialCount || 1);
+	const [page, setPage] = useState<number>(initialList.length > 0 ? 1 : 0);
 	const [loading, setLoading] = useState<boolean>(false);
+	const hasInitialData = useRef(initialList.length > 0);
 
 	const { ref, inView } = useInView({
 		threshold: 0.5,
@@ -55,6 +62,11 @@ export default function CollegeList() {
 
 
 	useEffect(() => {
+		if (hasInitialData.current) {
+			hasInitialData.current = false;
+			return;
+		}
+
 		setLoading(true);
 		setListed([]);
 		setPage(0);
@@ -103,7 +115,7 @@ export default function CollegeList() {
 							<CollegeListItem college={i} index={idx} key={idx} />
 						))
 					}
-					{!loading && listed && listed.length < uniCount ?
+					{loading || (listed && listed.length < uniCount) ?
 						(
 							<div ref={ref} className='flex flex-row gap-2 justify-center items-center font-semibold md:max-w-3xl'>
 								<Loader2Icon className={`animate-spin size-6`} />

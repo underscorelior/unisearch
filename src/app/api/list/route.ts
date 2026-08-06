@@ -8,9 +8,17 @@ export async function GET(req: NextRequest) {
 
 	try {
 		const url = `${BACKEND_URL}/list?page=${page}&limit=${limit}${filter ? `&filter=${filter}` : ''}`;
-		const response = await fetch(url);
+		const response = await fetch(url, { next: { revalidate: 3600 } });
 		const data = await response.json();
-		return NextResponse.json({ data, success: true });
+		return NextResponse.json(
+			{ data, success: true },
+			{
+				headers: {
+					'Cache-Control':
+						'public, s-maxage=3600, stale-while-revalidate=86400',
+				},
+			},
+		);
 	} catch (error) {
 		return NextResponse.json(
 			{ message: 'An error occurred while processing the request', error: (error as Error).message, success: false },
