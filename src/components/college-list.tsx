@@ -36,7 +36,12 @@ export default function CollegeList({
 	}
 
 	const loadMore = useCallback(async () => {
-		if (listed && listed.length < uniCount) {
+		if (!listed || listed.length >= uniCount) {
+			setLoading(false);
+			return;
+		}
+
+		try {
 			const response = await fetch(
 				`/api/list?page=${page}${queriesToString(queries).length > 0 ? `&filter=${queriesToString(queries)}` : ''}`);
 
@@ -48,17 +53,18 @@ export default function CollegeList({
 			setListed([...listed, ...data.data['list']]);
 			setUniCount(data.data['count']);
 			setPage(page + 1)
+		} finally {
 			setLoading(false);
 		}
 	}, [page, queries, listed, uniCount]);
 
 
 	useEffect(() => {
-		if (inView && !loading) {
+		if (inView && !loading && listed && listed.length < uniCount) {
 			setLoading(true);
 			loadMore();
 		}
-	}, [inView, loading, loadMore]);
+	}, [inView, loading, listed, uniCount, loadMore]);
 
 
 	useEffect(() => {
